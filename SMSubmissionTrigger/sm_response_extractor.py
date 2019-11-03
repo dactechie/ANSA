@@ -2,7 +2,7 @@
 #import re
 
 from .utils.string_manip import clean, kclean #, get_text_by_idlist, get_idname_dict
-from .utils.others import storage_convertor,  get_text_by_idlist, get_idname_dict
+from .utils.converters import storage_convertor,  get_text_by_idlist, get_idname_dict
 from .sm_matrix_utils import handle_col_choices, handle_nocols, handle_otherids
 # id_types = ['row_id', 'col_id', 'choice_id']
 # id_types_list_map = {'row_id':'rows' , 'col_id': 'cols', 'choice_id': 'choices'}
@@ -20,6 +20,8 @@ from .sm_matrix_utils import handle_col_choices, handle_nocols, handle_otherids
 '''
 def extract_response(survey_schema, answers_json):
   pages = answers_json['pages']
+
+  # TODO insert datetime of the submission
   pages.insert(0,[{'response_id' : answers_json['id'], 'survey_id' : answers_json['survey_id']}])
   
   res = process_pages(survey_schema, pages)
@@ -71,18 +73,6 @@ def process_pages(qna_id_defs, pages):
   return results
 
 
-# def process_pages(qna_id_defs, pages):
-#   results = []
-#   meta = pages.pop(0)
-#   for counter, page in enumerate(pages):
-#     res = process_page(qna_id_defs['pages'][counter], page)
-#     results.append(res)
-#   results.insert(0, meta)
-#   return results
-
-    #return [process_page(qna_id_defs['pages'][counter], page)  for counter, page in enumerate(pages) ]
-
-
 def get_text_qna_open_ended(schema_question, data):
   if len(data['answers']) == 1:
     return clean(data['answers'][0]['text'])
@@ -132,13 +122,13 @@ def build_text_matrix_with_cols (schema):
 
 
 
-def process_matrix_with_cols_AFTERIMPLEMENTING_TESTSUITE(matrix_schema, data):
-  rows, cols, cols_choices = build_text_matrix_with_cols (matrix_schema['answers'])
+# def process_matrix_with_cols_AFTERIMPLEMENTING_TESTSUITE(matrix_schema, data):
+#   rows, cols, cols_choices = build_text_matrix_with_cols (matrix_schema['answers'])
   
-  results1, data_answers = handle_otherids(data['answers']) #data_answers now has no other_ids
-  results2, data_answers = handle_nocols(data_answers, rows, cols, cols_choices ) # data
-  results3 = handle_col_choices(data_answers)
-  return {**results1, **results2, **results3}
+#   results1, data_answers = handle_otherids(data['answers']) #data_answers now has no other_ids
+#   results2, data_answers = handle_nocols(data_answers, rows, cols, cols_choices ) # data
+#   results3 = handle_col_choices(data_answers)
+#   return {**results1, **results2, **results3}
       
 
 
@@ -189,12 +179,12 @@ def build_text_matrix_no_cols (schema): # answers schema
   return rows, choices
 
 
-def process_matrix_with_NO_cols_AFTERIMPLEMENTING_TESTSUITE(matrix_schema, data):
-  rows, choices = build_text_matrix_no_cols (matrix_schema['answers'])
+# def process_matrix_with_NO_cols_AFTERIMPLEMENTING_TESTSUITE(matrix_schema, data):
+#   rows, choices = build_text_matrix_no_cols (matrix_schema['answers'])
   
-  results1, data_answers = handle_otherids(data['answers']) #data_answers now has no other_ids
+#   results1, data_answers = handle_otherids(data['answers']) #data_answers now has no other_ids
 
-  ...
+#   ...
 
 
 
@@ -240,66 +230,3 @@ qtype_handlers = {
   'datetime' : get_text_qna_open_ended,
   'demographic' : process_demographics
 }
-
-'''
-
-def process_demographics(schema, data):
-  rows  =  get_idname_dict(schema['answers'], 'rows', 'type')
-  results = []
-  
-  for answer in data['answers']:
-    row_id = answer.get('row_id')
-    rtext = rows[row_id]
-    results.append ({rtext : answer ['text']})
-
-process page
-  # for resp_q in response_qs:
-  #   q_schema = schema_for_question_id(sch_qs, resp_q['id'])
-  #   if not q_schema: # seome qustions may be skipped
-  #     continue
-  #   res = process_question(q_schema, resp_q)
-  #   results.append(res)
-  # return results
-'''
-
-
-'''
-def get_text_qna_mcq(schema_question, data):  
-  #chosens  = []
-...
-  # if other_id:
-  #   other_id = other_id['id']
-  
-  # for answer in data['answers']:
-  #   chosen_id = answer['choice_id']
-  #   chosen = get_text_by_id(chosen_id, schema_question['answers']['choices'])
-  #   if chosen:
-  #     chosens.append(chosen)
-  #   elif other_id and chosen_id == other_id:
-  #     chosens.append(clean(schema_question['answers']['other']['text']))
-    
-  return chosens
-
-
-
-# def process_matrix_with_cols(matrix_schema, data):
-#   rows, cols, cols_choices = build_text_matrix_with_cols (matrix_schema['answers'])
-
-#   results = {  clean(rows[answer['row_id']]) : [] for answer in data['answers'] }
-  
-#   for answer, row_label in data['answers'] :
-#     ans_col_id = answer['col_id']
-#     ans_choice_id = answer['choice_id']
-    
-#     ctext = cols[ ans_col_id ]
-#     col_choices = cols_choices[ ans_col_id ]
-#     if not ctext:
-#       results[row_label] = clean(col_choices[ans_choice_id])
-#       continue
-
-#     results[row_label].append({ clean(ctext) : clean(col_choices[ans_choice_id]) })
-
-#   return results
-    
-
-  '''

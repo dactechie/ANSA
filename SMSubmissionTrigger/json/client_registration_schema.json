@@ -8,62 +8,48 @@
   "id": "271875304",
   "question_count": 20,
   "date_modified": "2019-10-26T06:55:00",
-  "analyze_url": "https://www.surveymonkey.com/analyze/ysZzBbspFmATdX7XAO3u57dfqgMeQDGsYSDvY8T_2FMPw_3D",
   "pages": [
       {
           "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876",
           "description": "",
           "questions": [
               { "family": "matrix",
-                  "subtype": "menu",
-                  "required": null,
+                  "subtype": "menu",  "required": null,
                   "answers": {
-                      "rows": [
-                     { "text": "Your Contact", "id": "2425863445"
-                     }
-                      ],
+                      "rows": [ { "text": "Your Contact", "id": "2425863445" } ],
                       "cols": [
                      {
                      "id": "2425863463" , 
                      "text": "Office", "choices": [
                     {  "id": "2425863464" ,  "text": "Eurobodalla" ,"position": 1
-                    } ,    {  "id": "2425863465" ,  "text": "Monaro" ,"position": 2
-                    } ,    {  "id": "2425863466" ,  "text": "Bega Valley" ,"position": 3
-                    } ,    {  "id": "2425863467" ,  "text": "Goulburn" ,"position": 4
+                    } , {  "id": "2425863465" ,  "text": "Monaro" ,"position": 2
+                    } , {  "id": "2425863466" ,  "text": "Bega Valley" ,"position": 3
+                    } , {  "id": "2425863467" ,  "text": "Goulburn" ,"position": 4
                     }
                      ]
                      },
                      {
                      "id": "2425863468" , 
                      "text": "AOD Case Manager / Counsellor", "choices": [
-                    {  "id": "2425863469" ,      
+                    {  "id": "2425863469" ,   
                         "text": "Michelle Figares" ,"position": 1
-                    } ,    {  "id": "2425863470" ,  "text": "Jacinta Hayward-Ryan" ,"position": 2
-                    } ,    {  "id": "2425863471" ,  "text": "Glenda McCarthy" ,"position": 3
-                    } ,    {  "id": "2425863472" ,  "text": "Vic May" ,"position": 4
-                    } ,    {  "id": "2425863473" ,  "text": "Aaron O'Bryan" ,"position": 5
-                    } ,    {  "id": "2425863474" ,  "text": "Tracy Sims" ,"position": 6
+                    } , {  "id": "2425863470" ,  "text": "Jacinta Hayward-Ryan" ,"position": 2
+                    } , {  "id": "2425863471" ,  "text": "Glenda McCarthy" ,"position": 3
+                    } , {  "id": "2425863472" ,  "text": "Vic May" ,"position": 4
+                    } , {  "id": "2425863473" ,  "text": "Aaron O'Bryan" ,"position": 5
+                    } , {  "id": "2425863474" ,  "text": "Tracy Sims" ,"position": 6
                     }
-                     ]
-                     }
-                      ]
+                     ] } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876/questions/367206412",
-                  "headings": [
-                      {
-                     "heading": "Your Directions / Pathways Details:"
-                      }
-                  ],
+                  "headings": [{ "heading": "Your Directions / Pathways Details:" }],
                   "validation": null,
-                  "id": "367206412"
-                  
+                  "id": "367206412"                  
               },
               { "family": "demographic",
                   "subtype": "international",
                   "required": null,
                   "answers": {
-                      "rows": [
-                     { "required": false ,"visible": false ,"text": "Name", "type": "name" ,"id": "2425862920" },
+                      "rows": [ { "required": false ,"visible": false ,"text": "Name", "type": "name" ,"id": "2425862920" },
                      { "required": false ,"visible": false ,"text": "Relationship to You", "type": "company" ,"id": "2425862921" },
                      { "required": false, "text": "Address", "type": "address" ,"id": "2425862922" },
                      { "required": false, "text": "Address 2", "type": "address2" ,"id": "2425862923" },
@@ -72,28 +58,18 @@
                      { "required": false, "text": "Post Code", "type": "zip" ,"id": "2425862926" },
                      { "required": false ,"visible": false ,"text": "\n Country\n", "type": "country" ,"id": "2425862927" },
                      { "required": false, "text": "Email Address", "type": "email" ,"id": "2425862928" },
-                     { "required": false, "text": "\n Phone Number\n", "type": "phone" ,"id": "2425862929"
-                     }
-                      ]
+                     { "required": false, "text": "\n Phone Number\n", "type": "phone" ,"id": "2425862929" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876/questions/367206405",
-                  "headings": [
-                      {
-                     "heading": "Contact Information"
-                      }
-                  ],
+                  "headings": [{"heading": "Contact Information"}],
                   "validation": null,
-                  "id": "367206405"
-                  
+                  "id": "367206405"                  
               },
               { "family": "single_choice",
-                  "subtype": "menu",
-                  "required": null,
+                  "subtype": "menu",  "required": null,
                   "answers": {
-                      "choices": [
-                     { "text": "Australia", "id": "2425862930" }, { "text": "Inadequately Described", "id": "2425862958" }, { "text": "At Sea", "id": "2425862959" }, 
+                      "choices": [ { "text": "Australia", "id": "2425862930" }, { "text": "Inadequately Described", "id": "2425862958" }, { "text": "At Sea", "id": "2425862959" }, 
                      { "text": "Not Stated", "id": "2425862960" }, { "text": "Afghanistan", "id": "2425862962" }, { "text": "Albania", "id": "2425862964" }, 
-                     { "text": "Algeria", "id": "2425862965" },        
+                     { "text": "Algeria", "id": "2425862965" },  
                      { "text": "Angola", "id": "2425862967" }, { "text": "Argentina", "id": "2425862970" }, { "text": "Armenia", "id": "2425862972" }, 
                      { "text": "Australian Antarctic Territory", "id": "2425862974" }, { "text": "Australian External Territories, nec", "id": "2425862975" },
                      { "text": "Austria", "id": "2425862976" }, { "text": "Azerbaijan", "id": "2425862977" }, { "text": "Bahamas", "id": "2425862978" }, 
@@ -131,20 +107,20 @@
                     { "text": "Mongolia", "id": "2425863107" }, { "text": "Morocco", "id": "2425863110" }, { "text": "Myanmar", "id": "2425863111" },
                      { "text": "Mozambique", "id": "2425863112" }, { "text": "Namibia", "id": "2425863113" }, { "text": "Nauru", "id": "2425863114" },
                       { "text": "Nepal", "id": "2425863115" }, { "text": "Netherlands", "id": "2425863116" }, { "text": "New Zealand", "id": "2425863118" },
-                       { "text": "Nigeria", "id": "2425863121" }, { "text": "Northern Ireland", "id": "2425863124" },                    
+                       { "text": "Nigeria", "id": "2425863121" }, { "text": "Northern Ireland", "id": "2425863124" },
                      { "text": "Norway", "id": "2425863126" }, { "text": "Oman", "id": "2425863127" }, { "text": "Pakistan", "id": "2425863128" },
                      { "text": "Palau", "id": "2425863129" }, { "text": "Panama", "id": "2425863130" }, { "text": "Papua New Guinea", "id": "2425863131" },
                      { "text": "Paraguay", "id": "2425863132" }, { "text": "Peru", "id": "2425863133" }, { "text": "Philippines", "id": "2425863134" }, 
                      { "text": "Poland", "id": "2425863136" }, { "text": "Polynesia (excludes Hawaii), nec", "id": "2425863137" }, { "text": "Portugal", "id": "2425863138" },
                      { "text": "Puerto Rico", "id": "2425863139" }, { "text": "Qatar", "id": "2425863140" },   
-                     { "text": "Romania", "id": "2425863143" },                    
+                     { "text": "Romania", "id": "2425863143" },
                      { "text": "Russian Federation", "id": "2425863145" }, { "text": "Rwanda", "id": "2425863146" }, { "text": "Samoa", "id": "2425863147" },
-                     { "text": "Samoa, American", "id": "2425863148" }, { "text": "San Marino", "id": "2425863149" },                    
+                     { "text": "Samoa, American", "id": "2425863148" }, { "text": "San Marino", "id": "2425863149" },
                      { "text": "Scotland", "id": "2425863152" }, { "text": "Senegal", "id": "2425863153" }, { "text": "Serbia", "id": "2425863154" },
-                     { "text": "Seychelles", "id": "2425863155" }, { "text": "Sierra Leone", "id": "2425863156" }, { "text": "Singapore", "id": "2425863157" },                    
+                     { "text": "Seychelles", "id": "2425863155" }, { "text": "Sierra Leone", "id": "2425863156" }, { "text": "Singapore", "id": "2425863157" },
                      { "text": "Slovakia", "id": "2425863159" }, { "text": "Slovenia", "id": "2425863160" }, { "text": "Solomon Islands", "id": "2425863161" },
-                     { "text": "Somalia", "id": "2425863162" }, { "text": "South Africa", "id": "2425863163" },                    
-                     { "text": "South Sudan", "id": "2425863165" }, { "text": "Southern and East Africa, nec", "id": "2425863166" }, { "text": "Spain", "id": "2425863167" },                   
+                     { "text": "Somalia", "id": "2425863162" }, { "text": "South Africa", "id": "2425863163" },
+                     { "text": "South Sudan", "id": "2425863165" }, { "text": "Southern and East Africa, nec", "id": "2425863166" }, { "text": "Spain", "id": "2425863167" },       
                      { "text": "Sri Lanka", "id": "2425863169" }, { "text": "Sudan", "id": "2425863177" },   
                      { "text": "Sweden", "id": "2425863180" }, { "text": "Switzerland", "id": "2425863181" }, { "text": "Syria", "id": "2425863182" }, 
                      { "text": "Taiwan", "id": "2425863183" }, { "text": "Tanzania", "id": "2425863185" }, { "text": "The former Yugoslav Republic of Macedonia", "id": "2425863186" },
@@ -152,74 +128,55 @@
                      { "text": "Tunisia", "id": "2425863193" }, { "text": "Turkey", "id": "2425863194" }, { "text": "Uganda", "id": "2425863198" }, { "text": "Ukraine", "id": "2425863199" },
                      { "text": "United Arab Emirates", "id": "2425863200" }, { "text": "United States of America", "id": "2425863201" }, { "text": "Uruguay", "id": "2425863202" },
                      { "text": "Uzbekistan", "id": "2425863203" }, { "text": "Vanuatu", "id": "2425863204" }, { "text": "Venezuela", "id": "2425863205" }, { "text": "Vietnam", "id": "2425863206" }, 
-                     { "text": "Wales", "id": "2425863209" }, { "text": "Yemen", "id": "2425863212" }, { "text": "Zambia", "id": "2425863213" }, { "text": "Zimbabwe", "id": "2425863214"
-                     }
-                      ]
+                     { "text": "Wales", "id": "2425863209" }, { "text": "Yemen", "id": "2425863212" }, { "text": "Zambia", "id": "2425863213" }, { "text": "Zimbabwe", "id": "2425863214" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876/questions/367206407",
-                  "headings": [
-                      {
-                     "heading": "* Country of Birth"
-                      }
-                  ],
+                  "headings": [ { "heading": "* Country of Birth"}],
                   "validation": null,
-                  "id": "367206407"
-                  
+                  "id": "367206407"                  
               },
               { "family": "single_choice",
-                  "subtype": "menu",
-                  "required": null,
+                  "subtype": "menu",  "required": null,
                   "answers": {
-                      "choices": [
-                     { "text": "English", "id": "2425862941" },  { "text": "Inadequately Described", "id": "2425863216" }, { "text": "Non Verbal, so described", "id": "2425863217" },
+                      "choices": [ { "text": "English", "id": "2425862941" },  { "text": "Inadequately Described", "id": "2425863216" }, { "text": "Non Verbal, so described", "id": "2425863217" },
                      { "text": "Not Stated", "id": "2425863218" }, { "text": "Australian Indigenous Languages, nfd", "id": "2425863219" }, { "text": "Other Languages, nfd", "id": "2425863220" },
                      { "text": "African Languages, nec", "id": "2425863223" }, { "text": "Afrikaans", "id": "2425863224" },  { "text": "Amharic", "id": "2425863228" }, { "text": "Arabic", "id": "2425863230" },
                      {"text": "Balinese", "id": "2425863236" }, { "text": "Bosnian", "id": "2425863248" },  { "text": "Bulgarian", "id": "2425863249" }, { "text": "Burmese", "id": "2425863250" },
                      { "text": "Burmese and Related Languages, nec", "id": "2425863251" }, { "text": "Cantonese", "id": "2425863252" }, { "text": "Catalan", "id": "2425863253" },
-                      { "text": "Chinese, nec", "id": "2425863263" }, { "text": "Croatian", "id": "2425863264" }, { "text": "Czech", "id": "2425863266" },       { "text": "Danish", "id": "2425863269" }, 
+                      { "text": "Chinese, nec", "id": "2425863263" }, { "text": "Croatian", "id": "2425863264" }, { "text": "Czech", "id": "2425863266" }, { "text": "Danish", "id": "2425863269" }, 
                       { "text": "Dutch", "id": "2425863274" },   { "text": "Estonian", "id": "2425863275" }, { "text": "Fijian", "id": "2425863277" },   { "text": "Filipino", "id": "2425863279" },
-                       { "text": "Finnish", "id": "2425863280" },  { "text": "French", "id": "2425863282" },        
+                       { "text": "Finnish", "id": "2425863280" },  { "text": "French", "id": "2425863282" },  
                      { "text": "German", "id": "2425863288" },   { "text": "Greek", "id": "2425863290" }, { "text": "Gujarati", "id": "2425863291" }, { "text": "Hebrew", "id": "2425863297" }, 
-                     { "text": "Hindi", "id": "2425863298" },    { "text": "Hungarian", "id": "2425863301" }, { "text": "Indonesian", "id": "2425863309" }, { "text": "Iranic, nec", "id": "2425863310" }, 
-                     { "text": "Irish", "id": "2425863311" },      { "text": "Italian", "id": "2425863312" }, { "text": "Japanese", "id": "2425863313" },   { "text": "Javanese", "id": "2425863314" },                    
-                     { "text": "Korean", "id": "2425863324" }, { "text": "Macedonian", "id": "2425863339" },                   
-                     { "text": "Malay", "id": "2425863341" },  { "text": "Malayalam", "id": "2425863342" }, { "text": "Maltese", "id": "2425863343" }, { "text": "Mandarin", "id": "2425863345" },                    
+                     { "text": "Hindi", "id": "2425863298" }, { "text": "Hungarian", "id": "2425863301" }, { "text": "Indonesian", "id": "2425863309" }, { "text": "Iranic, nec", "id": "2425863310" }, 
+                     { "text": "Irish", "id": "2425863311" },   { "text": "Italian", "id": "2425863312" }, { "text": "Japanese", "id": "2425863313" },   { "text": "Javanese", "id": "2425863314" },
+                     { "text": "Korean", "id": "2425863324" }, { "text": "Macedonian", "id": "2425863339" },       
+                     { "text": "Malay", "id": "2425863341" },  { "text": "Malayalam", "id": "2425863342" }, { "text": "Maltese", "id": "2425863343" }, { "text": "Mandarin", "id": "2425863345" },
                      { "text": "Maori (Cook Island)", "id": "2425863348" }, { "text": "Maori (New Zealand)", "id": "2425863349" }, { "text": "Nauruan", "id": "2425863359" },
-                     { "text": "Nepali", "id": "2425863361" }, { "text": "Norwegian", "id": "2425863363" },                    
+                     { "text": "Nepali", "id": "2425863361" }, { "text": "Norwegian", "id": "2425863363" },
                      { "text": "Other Eastern Asian Languages, nec", "id": "2425863369" }, { "text": "Other Eastern European Languages, nec", "id": "2425863370" }, 
                      { "text": "Other Southeast Asian Languages", "id": "2425863371" }, { "text": "Other Southern Asian Languages", "id": "2425863372" }, 
                      { "text": "Other Southern European Languages, nec", "id": "2425863373" }, { "text": "Other Southwest and Central Asian Languages, nec", "id": "2425863374" },
-                      { "text": "Pacific Austronesian Languages, nec", "id": "2425863375" },                    
-                     { "text": "Papua New Guinea Languages, nec", "id": "2425863377" }, { "text": "Pashto", "id": "2425863378" }, { "text": "Persian (excluding Dari)", "id": "2425863379" },                    
-                     { "text": "Polish", "id": "2425863381" }, { "text": "Portuguese", "id": "2425863382" },      
+                      { "text": "Pacific Austronesian Languages, nec", "id": "2425863375" },
+                     { "text": "Papua New Guinea Languages, nec", "id": "2425863377" }, { "text": "Pashto", "id": "2425863378" }, { "text": "Persian (excluding Dari)", "id": "2425863379" },
+                     { "text": "Polish", "id": "2425863381" }, { "text": "Portuguese", "id": "2425863382" },   
                      { "text": "Rohingya", "id": "2425863384" }, { "text": "Russian", "id": "2425863388" }, { "text": "Samoan", "id": "2425863485" } ,   { "text": "Somali", "id": "2425863498" }, 
                      { "text": "Spanish", "id": "2425863500" },   { "text": "Swahili", "id": "2425863501" }, { "text": "Swedish", "id": "2425863502" }, { "text": "Tagalog", "id": "2425863503" },  
-                      { "text": "Tamil", "id": "2425863505" },                     
-                     { "text": "Thai", "id": "2425863509" },      { "text": "Tigrinya", "id": "2425863513" }, { "text": "Timorese", "id": "2425863514" },  { "text": "Turkish", "id": "2425863521" }, 
+                      { "text": "Tamil", "id": "2425863505" },         
+                     { "text": "Thai", "id": "2425863509" },   { "text": "Tigrinya", "id": "2425863513" }, { "text": "Timorese", "id": "2425863514" },  { "text": "Turkish", "id": "2425863521" }, 
                      { "text": "Ukrainian", "id": "2425863524" },  { "text": "Urdu", "id": "2425863525" }, { "text": "Uygur", "id": "2425863526" }, {"text": "Uzbek", "id": "2425863527" }, 
                      { "text": "Vietnamese", "id": "2425863528" }
                       ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876/questions/367206409",
-                  "headings": [
-                      {
-                     "heading": "* Preferred Language"
-                      }
-                  ],
+                  "headings": [ {"heading": "* Preferred Language" }],
                   "validation": null,
-                  "id": "367206409"
-                  
+                  "id": "367206409"                  
               },
               { "family": "single_choice",
                   "subtype": "vertical_two_col",
                   "required": null,
                   "answers": {
-                      "choices": [
-                     { "text": "Aboriginal but not Torres Strait Islander origin", "id": "2425862936" }, { "text": "Torres Strait Islander but not Aboriginal origin", "id": "2425862937" },
+                      "choices": [ { "text": "Aboriginal but not Torres Strait Islander origin", "id": "2425862936" }, { "text": "Torres Strait Islander but not Aboriginal origin", "id": "2425862937" },
                       { "text": "Both Aboriginal and Torres Strait Islander origin", "id": "2425862938" }, { "text": "Neither Aboriginal nor Torres Strait Islander origin", "id": "2425862939" }, 
-                      { "text": "Prefer not to say / Not Stated", "id": "2425862940"
-                     }
-                      ]
+                      { "text": "Prefer not to say / Not Stated", "id": "2425862940" } ]
                   },
                   "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876/questions/367206408",
                   "headings": [
@@ -245,28 +202,18 @@
                      {"required": false ,"visible": false ,"text": "ZIP/Postal Code", "type": "zip" ,"id": "2425862952" },
                      {"required": false ,"visible": false ,"text": "\n Country\n", "type": "country" ,"id": "2425862953" },
                      {"required": false ,"visible": false ,"text": "\n Email Address\n", "type": "email" ,"id": "2425862954" },
-                     {"required": false, "text": "\n Phone Number\n", "type": "phone" ,"id": "2425862955"
-                     }
-                      ]
+                     {"required": false, "text": "\n Phone Number\n", "type": "phone" ,"id": "2425862955" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536876/questions/367206406",
-                  "headings": [
-                      {
-                     "heading": "Your Nominated Emergency Contact"
-                      }
-                  ],
+                  "headings": [{ "heading": "Your Nominated Emergency Contact" }],
                   "validation": null,
-                  "id": "367206406"
-                  
+                  "id": "367206406"                  
               }
           ],
-          "title": "DEMOGRAPHICS",
-          
+          "title": "DEMOGRAPHICS", 
           "id": "100536876",
           "question_count": 6
       },
       {
-          "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536998",
           "description": "",
           "questions": [
               { "family": "open_ended",
@@ -277,26 +224,16 @@
                       "type": "at_least"
                   },
                   "answers": {
-                      "rows": [
-                     { "text": "First", "id": "2425867005" }, { "text": "Last", "id": "2425867006"
-                     }
-                      ]
+                      "rows": [ { "text": "First", "id": "2425867005" }, { "text": "Last", "id": "2425867006" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536998/questions/367206882",
-                  "headings": [
-                      {
-                     "heading": "Name"
-                      }
-                  ],
+                  "headings": [ { "heading": "Name" }],
                   "validation": null,
-                  "id": "367206882"
-                  
+                  "id": "367206882"                  
               },
               { "family": "single_choice",
                   "subtype": "vertical_two_col",
                   "required": {
-                      "text": "This question requires an answer.",
-                      
+                      "text": "This question requires an answer.",          
                       "type": "all"
                   },
                   "answers": {
@@ -304,42 +241,24 @@
                      "text": "Other (please specify)",
                      "id": "2425867022", 
                      "is_answer_choice": true,
-                     
                      "num_chars": 50,
                      "error_text": "Please enter a comment.",
                      "num_lines": 1
                       },
-                      "choices": [
-                     {  "visible": false ,"text": "Male1<span style=\"color: #ffffff;\"></span>", "id": "2425867015" }, { "text": "Male", "id": "2425867023" }, 
-                     { "text": "Female ", "id": "2425867016" }, { "text": "Non Binary", "id": "2425867017" }, { "text": "Prefer not to say", "id": "2425867018"
-                     }
-                      ]
-                  },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536998/questions/367206884",
-                  "headings": [
-                      {
-                     "heading": "* Gender Identity"
-                      }
-                  ],
+                      "choices": [ {  "visible": false ,"text": "Male1<span style=\"color: #ffffff;\"></span>", "id": "2425867015" }, { "text": "Male", "id": "2425867023" }, 
+                     { "text": "Female ", "id": "2425867016" }, { "text": "Non Binary", "id": "2425867017" }, { "text": "Prefer not to say", "id": "2425867018" } ]
+                  },      
+                  "headings": [{"heading": "* Gender Identity" }],
                   "validation": null,
-                  "id": "367206884"
-                  
+                  "id": "367206884"                  
               },
               { "family": "datetime",
                   "subtype": "date_only",
                   "required": null,
                   "answers": {
-                      "rows": [
-                     { "text": "DOB", "id": "2426177738"
-                     }
-                      ]
+                      "rows": [ { "text": "DOB", "id": "2426177738"} ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536998/questions/367258584",
-                  "headings": [
-                      {
-                     "heading": "Date of birth"
-                      }
-                  ],
+                  "headings": [{"heading": "Date of birth"}],
                   "validation": {
                       "sum_text": "",
                       "min": null,
@@ -348,13 +267,10 @@
                       "max": null,
                       "type": "date_intl"
                   },
-                  "id": "367258584"
-                  
+                  "id": "367258584"                  
               }
           ],
-          "title": "Name, DOB, Sex",
-          
-          "id": "100536998",
+          "title": "Name, DOB, Sex",  "id": "100536998",
           "question_count": 3
       },
       {
@@ -365,20 +281,12 @@
                   "subtype": "vertical",
                   "required": null,
                   "answers": {
-                      "choices": [
-                     { "text": "Own Alcohol and/or Drug Use", "id": "2425863452" }, { "text": "Other's Alcohol and/or Drug Use", "id": "2425863453"
-                     }
-                      ]
+                      "choices": [ { "text": "Own Alcohol and/or Drug Use", "id": "2425863452" }, { "text": "Other's Alcohol and/or Drug Use", "id": "2425863453" } ]
                   },
                   "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536877/questions/367206413",
-                  "headings": [
-                      {
-                     "heading": "*Client Type"
-                      }
-                  ],
+                  "headings": [{"heading": "*Client Type"}],
                   "validation": null,
-                  "id": "367206413"
-                  
+                  "id": "367206413"                  
               },
               { "family": "single_choice",
                   "subtype": "vertical_two_col",
@@ -388,27 +296,19 @@
                      "text": "Other (please provide details)",
                      "id": "2425863437", 
                      "is_answer_choice": true,
-                     
-                     "num_chars": 100,
                      "error_text": "Please enter a comment.",
                      "num_lines": 3
                       },
-                      "choices": [
-                     { "text": "Self", "id": "2425863427" }, { "text": "Family member / Friend", "id": "2425863428" }, { "text": "Medical Practitioner", "id": "2425863429" },
+                      "choices": [ { "text": "Self", "id": "2425863427" }, { "text": "Family member / Friend", "id": "2425863428" }, { "text": "Medical Practitioner", "id": "2425863429" },
                       { "text": "Hospital", "id": "2425863430" }, { "text": "Mental Healthcare service", "id": "2425863431" }, { "text": "Alcohol and other drug treatment service", "id": "2425863432" },
                        { "text": "Other community / health care service", "id": "2425863433" }, { "text": "Correctional service", "id": "2425863434" }, 
                        { "text": "Police Diversion", "id": "2425863435" }, { "text": "Court Diversion", "id": "2425863436"  }
                       ]
                   },
                   "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536877/questions/367206410",
-                  "headings": [
-                      {
-                     "heading": "*How were you referred to Pathways / Directions?"
-                      }
-                  ],
+                  "headings": [{"heading": "*How were you referred to Pathways / Directions?"}],
                   "validation": null,
-                  "id": "367206410"
-                  
+                  "id": "367206410"                  
               }
           ],
           "title": "REFERRAL INFORMATION",  
@@ -420,29 +320,25 @@
           "description": "",
           "questions": [
               { "family": "matrix",
-                  "subtype": "menu",
-                  "required": null,
+                  "subtype": "menu",  "required": null,
                   "answers": {
-                      "rows": [
-                     { "text": "Main Substance of Concern", "id": "2425863454"
-                     }
-                      ],
+                      "rows": [ { "text": "Main Substance of Concern", "id": "2425863454" } ],
                       "cols": [
                      {
                      "id": "2425863455" , 
                      "text": "Please select from the dropbox<br /><br />", "choices": [
                     {  "id": "2425863536" ,  "text": "Alcohol" ,"position": 1
-                    } ,    {  "id": "2425863537" ,  "text": "Tobacco / Nicotine" ,"position": 2
-                    } ,    {  "id": "2425863538" ,  "text": "Cannabis" ,"position": 3
-                    } ,    {  "id": "2425863539" ,  "text": "Amphetamine-type substances (eg. ice, methamphetamine)" ,"position": 4
-                    } ,    {  "id": "2425863540" ,  "text": "Other Stimulants / Hallucinogens (eg. MDMA)" ,"position": 5
-                    } ,    {  "id": "2425863541" ,  "text": "Benzodiazepines - prescribed" ,"position": 6
-                    } ,    {  "id": "2425863542" ,  "text": "Benzodiazepines - non-prescribed" ,"position": 7
-                    } ,    {  "id": "2425863543" ,  "text": "Prescribed Opioid replacements (eg. oxycodone, tramadol, fentanyl)" ,"position": 8
-                    } ,    {  "id": "2425863544" ,  "text": "Non-prescribed opioids (eg. heroin)" ,"position": 9
-                    } ,    {  "id": "2425863545" ,  "text": "Cocaine" ,"position": 10
-                    } ,    {  "id": "2425863546" ,  "text": "Steroids and other anabolic agents" ,"position": 11
-                    } ,    {  "id": "2425863547" ,  "text": "Other" ,"position": 12
+                    } , {  "id": "2425863537" ,  "text": "Tobacco / Nicotine" ,"position": 2
+                    } , {  "id": "2425863538" ,  "text": "Cannabis" ,"position": 3
+                    } , {  "id": "2425863539" ,  "text": "Amphetamine-type substances (eg. ice, methamphetamine)" ,"position": 4
+                    } , {  "id": "2425863540" ,  "text": "Other Stimulants / Hallucinogens (eg. MDMA)" ,"position": 5
+                    } , {  "id": "2425863541" ,  "text": "Benzodiazepines - prescribed" ,"position": 6
+                    } , {  "id": "2425863542" ,  "text": "Benzodiazepines - non-prescribed" ,"position": 7
+                    } , {  "id": "2425863543" ,  "text": "Prescribed Opioid replacements (eg. oxycodone, tramadol, fentanyl)" ,"position": 8
+                    } , {  "id": "2425863544" ,  "text": "Non-prescribed opioids (eg. heroin)" ,"position": 9
+                    } , {  "id": "2425863545" ,  "text": "Cocaine" ,"position": 10
+                    } , {  "id": "2425863546" ,  "text": "Steroids and other anabolic agents" ,"position": 11
+                    } , {  "id": "2425863547" ,  "text": "Other" ,"position": 12
                     }
                      ]
                      },
@@ -450,43 +346,30 @@
                      "id": "2425863477" , 
                      "text": "Method of use <br />Ingest / Smoke / Inject / Sniff / Inhale / Other", "choices": [
                     {  "id": "2425863478" ,  "text": "Ingest (Drink / Eat)" ,"position": 1
-                    } ,    {  "id": "2425863479" ,  "text": "Smoke" ,"position": 2
-                    } ,    {  "id": "2425863480" ,  "text": "Inject" ,"position": 3
-                    } ,    {  "id": "2425863481" ,  "text": "Sniff (powder)" ,"position": 4
-                    } ,    {  "id": "2425863482" ,  "text": "Inhale (vapour)" ,"position": 5
-                    } ,    {  "id": "2425863483" ,  "text": "Other" ,"position": 6
-                    } ,    {  "id": "2425863484" ,  "text": "Not stated" ,"position": 7
+                    } , {  "id": "2425863479" ,  "text": "Smoke" ,"position": 2
+                    } , {  "id": "2425863480" ,  "text": "Inject" ,"position": 3
+                    } , {  "id": "2425863481" ,  "text": "Sniff (powder)" ,"position": 4
+                    } , {  "id": "2425863482" ,  "text": "Inhale (vapour)" ,"position": 5
+                    } , {  "id": "2425863483" ,  "text": "Other" ,"position": 6
+                    } , {  "id": "2425863484" ,  "text": "Not stated" ,"position": 7
                     }
-                     ]
-                     }
-                      ]
+                     ] } ]
                   },
                   "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536878/questions/367206414",
-                  "headings": [
-                      {
-                     "heading": "* Principal Substance of Concern<br><br>"
-                      }
-                  ],
+                  "headings": [{ "heading": "* Principal Substance of Concern<br><br>" }],
                   "validation": null,
-                  "id": "367206414"
-                  
+                  "id": "367206414"                  
               },
               { "family": "matrix",
-                  "subtype": "menu",
-                  "required": null,
+                  "subtype": "menu",  "required": null,
                   "answers": {
-                      "rows": [
-                     { "text": "Other substance of concern 1", "id": "2425863404" }, { "text": "Other substance of concern 2", "id": "2425863406" }, 
+                      "rows": [ { "text": "Other substance of concern 1", "id": "2425863404" }, { "text": "Other substance of concern 2", "id": "2425863406" }, 
                      { "text": "Other substance of concern 3", "id": "2425863407" }, { "text": "Other substance of concern 4", "id": "2425863408" },
-                      { "text": "Other substance of concern 5", "id": "2425863409"
-                     }
-                      ],
+                      { "text": "Other substance of concern 5", "id": "2425863409" } ],
                       "other": {
                      "text": "Notes",
                      "id": "2425863424", 
                      "is_answer_choice": false,
-                     
-                     "num_chars": 100,
                      "error_text": "",
                      "num_lines": 2
                       },
@@ -495,21 +378,19 @@
                      "id": "2425863405" , 
                      "text": "Please select from the dropbox", "choices": [
                     {  "id": "2425863410" ,  "text": "Alcohol" ,"position": 1
-                    } ,    {  "id": "2425863411" ,  "text": "Tobacco / Nicotine" ,"position": 2
-                    } ,    {  "id": "2425863412" ,  "text": "Cannabis" ,"position": 3
-                    } ,    {  "id": "2425863413" ,  "text": "Amphetamine-type substances (eg. ice, methamphetamine)" ,"position": 4
-                    } ,    {  "id": "2425863414" ,  "text": "Other Stimulants / Hallucinogens (eg. MDMA)" ,"position": 5
-                    } ,    {  "id": "2425863415" ,  "text": "Benzodiazepines - prescribed" ,"position": 6
-                    } ,    {  "id": "2425863416" ,  "text": "Benzodiazepines - non-prescribed" ,"position": 7
-                    } ,    {  "id": "2425863417" ,  "text": "Prescribed Opioid replacements (eg. oxycodone, tramadol, fentanyl)" ,"position": 8
-                    } ,    {  "id": "2425863418" ,  "text": "Non-prescribed opioids (eg. heroin)" ,"position": 9
-                    } ,    {  "id": "2425863419" ,  "text": "Cocaine" ,"position": 10
-                    } ,    {  "id": "2425863420" ,  "text": "Steroids and other anabolic agents" ,"position": 11
-                    } ,    {  "id": "2425863421" ,  "text": "Other" ,"position": 12
+                    } , {  "id": "2425863411" ,  "text": "Tobacco / Nicotine" ,"position": 2
+                    } , {  "id": "2425863412" ,  "text": "Cannabis" ,"position": 3
+                    } , {  "id": "2425863413" ,  "text": "Amphetamine-type substances (eg. ice, methamphetamine)" ,"position": 4
+                    } , {  "id": "2425863414" ,  "text": "Other Stimulants / Hallucinogens (eg. MDMA)" ,"position": 5
+                    } , {  "id": "2425863415" ,  "text": "Benzodiazepines - prescribed" ,"position": 6
+                    } , {  "id": "2425863416" ,  "text": "Benzodiazepines - non-prescribed" ,"position": 7
+                    } , {  "id": "2425863417" ,  "text": "Prescribed Opioid replacements (eg. oxycodone, tramadol, fentanyl)" ,"position": 8
+                    } , {  "id": "2425863418" ,  "text": "Non-prescribed opioids (eg. heroin)" ,"position": 9
+                    } , {  "id": "2425863419" ,  "text": "Cocaine" ,"position": 10
+                    } , {  "id": "2425863420" ,  "text": "Steroids and other anabolic agents" ,"position": 11
+                    } , {  "id": "2425863421" ,  "text": "Other" ,"position": 12
                     }
-                     ]
-                     }
-                      ]
+                     ] } ]
                   },
                   "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536878/questions/367206419",
                   "headings": [
@@ -522,19 +403,13 @@
                   
               },
               { "family": "matrix",
-                  "subtype": "menu",
-                  "required": null,
+                  "subtype": "menu",  "required": null,
                   "answers": {
-                      "rows": [
-                     { "text": "Other Addictive Behaviours", "id": "2425863548"
-                     }
-                      ],
+                      "rows": [ { "text": "Other Addictive Behaviours", "id": "2425863548" } ],
                       "other": {
                      "text": "Details",
                      "id": "2425863552", 
                      "is_answer_choice": false,
-                     
-                     "num_chars": 100,
                      "error_text": "",
                      "num_lines": 1
                       },
@@ -542,33 +417,22 @@
                      {
                      "id": "2425863549" , 
                      "text": "", "choices": [
-                    {  "id": "2425863555" ,  "text": "Gambling" ,"position": 1
-                    } ,    {  "id": "2425863556" ,  "text": "Sex" ,"position": 2
-                    } ,    {  "id": "2425863557" ,  "text": "Internet" ,"position": 3
-                    } ,    {  "id": "2425863558" ,  "text": "Hoarding" ,"position": 4
-                    } ,    {  "id": "2425863559" ,  "text": "Porn" ,"position": 5
-                    } ,    {  "id": "2425863560" ,  "text": "Gaming" ,"position": 6
-                    } ,    {  "id": "2425863561" ,  "text": "None" ,"position": 7
-                    } ,    {  "id": "2425863562" ,  "text": "Other (please provide details below)" ,"position": 8
-                    }
-                     ]
-                     }
-                      ]
+                        {  "id": "2425863555" ,  "text": "Gambling" ,"position": 1 }
+                      , {  "id": "2425863556" ,  "text": "Sex" ,"position": 2 }
+                     , {  "id": "2425863557" ,  "text": "Internet" ,"position": 3}
+                     , {  "id": "2425863558" ,  "text": "Hoarding" ,"position": 4}
+                     , {  "id": "2425863559" ,  "text": "Porn" ,"position": 5 }
+                     , {  "id": "2425863560" ,  "text": "Gaming" ,"position": 6}
+                     , {  "id": "2425863561" ,  "text": "None" ,"position": 7}
+                     , {  "id": "2425863562" ,  "text": "Other (please provide details below)" ,"position": 8}
+                     ] } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536878/questions/367206422",
-                  "headings": [
-                      {
-                     "heading": "Any other addictive behaviours that concern you?"
-                      }
-                  ],
+                  "headings": [{"heading": "Any other addictive behaviours that concern you?"}],
                   "validation": null,
-                  "id": "367206422"
-                  
+                  "id": "367206422"                  
               }
           ],
-          "title": "SUBSTANCE USE",
-          
-          "id": "100536878",
+          "title": "SUBSTANCE USE",  "id": "100536878",
           "question_count": 3
       },
       {
@@ -583,33 +447,23 @@
                      "text": "Notes",
                      "id": "2425862907", 
                      "is_answer_choice": false,
-                     
-                     "num_chars": 100,
                      "error_text": "",
                      "num_lines": 3
                       },
-                      "choices": [
-                     { "text": "Reduce my use", "id": "2425862900" }, { "text": "Reduce the harmfulness of my use", "id": "2425862901" }, 
+                      "choices": [ { "text": "Reduce my use", "id": "2425862900" }, { "text": "Reduce the harmfulness of my use", "id": "2425862901" }, 
                      { "text": "Change my usage patterns", "id": "2425862904" }, { "text": "Stop using", "id": "2425862902" }, 
                      { "text": "Not really wanting to change my use at all", "id": "2425862903" }, { "text": "Manage the impact of other's alcohol / drug use", "id": "2425862957"}
                       ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536879/questions/367206403",
-                  "headings": [
-                      {
-                     "heading": "SERVICE GOALS<br>What are your goals regarding alcohol / drug use?<br><br>"
-                      }
-                  ],
+                  "headings": [ {"heading": "SERVICE GOALS<br>What are your goals regarding alcohol / drug use?<br><br>"} ],
                   "validation": null,
-                  "id": "367206403"
-                  
+                  "id": "367206403"                  
               },
               { "family": "multiple_choice",
                   "subtype": "vertical_two_col",
                   "required": null,
                   "answers": {
-                      "choices": [
-                     { "text": "AOD Brief Intervention (1-3 sessions, then review)", "id": "2425862908" }, { "text": "AOD counselling & support (3 - 6 sessions, then review)", "id": "2425862909" },
+                      "choices": [ { "text": "AOD Brief Intervention (1-3 sessions, then review)", "id": "2425862908" }, { "text": "AOD counselling & support (3 - 6 sessions, then review)", "id": "2425862909" },
                       { "text": "Case Management", "id": "2425862910" }, { "text": "Group participation", "id": "2425862911" }, { "text": "Information & Education", "id": "2425862912" }, 
                       { "text": "Arcadia Residential Service - Non-medicated Detox Program 1 week", "id": "2425862913" }, { "text": "Arcadia Residential Service - 12 week Transition Program", "id": "2425862914" },
                        { "text": "Arcadia Residential Service - 12 week Day Program", "id": "2425862915" }, { "text": "Althea GP", "id": "2425862916" }, { "text": "Althea Nurse", "id": "2425862917" },
@@ -617,15 +471,9 @@
                      { "text": "Support, information and/or counselling as a family member or friend of a person with a substance dependency", "id": "2425862919" }
                       ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536879/questions/367206404",
-                  "headings": [
-                      {
-                     "heading": "Discussion about Directions' services<br>Initial support identified:"
-                      }
-                  ],
+                  "headings": [{"heading": "Discussion about Directions' services<br>Initial support identified:"}],
                   "validation": null,
-                  "id": "367206404"
-                  
+                  "id": "367206404"                  
               },
               { "family": "single_choice",
                   "subtype": "vertical",
@@ -635,24 +483,16 @@
                      "text": "Yes - please provide details<br />(risk assessment required)",
                      "id": "2425863399",
                      "is_answer_choice": true,
-                     "num_chars": 100,
                      "error_text": "Please enter a comment.",
                      "num_lines": 3
                       },
-                      "choices": [
-                     { "text": "No", "id": "2425863554"
-                     }
-                      ]
+                      "choices": [ { "text": "No", "id": "2425863554" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536879/questions/367206418",
-                  "headings": [
-                      {
-                     "heading": "Do you have any immediate concerns for the safety and wellbeing of either yourself or others?<br><br>(consider use or experience of physical violence, as well as other forms of abuse such as: intimidation, threats, malicious shaming, controlling and isolation)"
-                      }
-                  ],
+                  "headings": [ {
+                     "heading": "Do you have any immediate concerns for the safety and wellbeing of either yourself or others?...f physical violence, as well as other forms of abuse such as: ..isolation)"
+                      }],
                   "validation": null,
-                  "id": "367206418"
-                  
+                  "id": "367206418"                  
               },
               { "family": "single_choice",
                   "subtype": "vertical",
@@ -662,30 +502,17 @@
                      "text": "Yes - please provide details<br />(risk assessment required)",
                      "id": "2425863393", 
                      "is_answer_choice": true,
-                     
-                     "num_chars": 100,
                      "error_text": "Please provide details",
                      "num_lines": 5
                       },
-                      "choices": [
-                     { "text": "No", "id": "2425863392"
-                     }
-                      ]
+                      "choices": [ { "text": "No", "id": "2425863392" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536879/questions/367206417",
-                  "headings": [
-                      {
-                     "heading": "Are you experiencing any current thoughts of death / dying or hurting yourself?"
-                      }
-                  ],
+                  "headings": [{"heading": "Are you experiencing any current thoughts of death / dying or hurting yourself?" }],
                   "validation": null,
-                  "id": "367206417"
-                  
+                  "id": "367206417"                  
               }
           ],
-          "title": "SERVICE SUPPORT",
-          
-          "id": "100536879",
+          "title": "SERVICE SUPPORT",  "id": "100536879",
           "question_count": 4
       },
       {
@@ -693,79 +520,53 @@
           "description": "",
           "questions": [
               { "family": "matrix",
-                  "subtype": "menu",
-                  "required": {
+                  "subtype": "menu",  "required": {
                       "text": "This question requires an answer.",
                       "amount": "1",
                       "type": "at_least"
                   },
                   "answers": {
-                      "rows": [
-                     { "text": "Any indication of suicidal ideation or history?", "id": "2425863389" }, { "text": "Any indication of domestic / family violence?", "id": "2425863390"
-                     }
-                      ],
+                      "rows": [ { "text": "Any indication of suicidal ideation or history?", "id": "2425863389" }, 
+                                { "text": "Any indication of domestic / family violence?", "id": "2425863390" } ],
                       "cols": [
-                     {
-                     "id": "2425863391" , 
-                     "text": "", "choices": [
-                    {  "id": "2425863402" ,  "text": "Yes - risk assessment required" ,"position": 1
-                    } ,    {  "id": "2425863403" ,  "text": "No" ,"position": 2
-                    }
-                     ]
-                     }
-                      ]
+                        {  "id": "2425863391", "text": "", "choices": [ 
+                            {  "id": "2425863402" ,  "text": "Yes - risk assessment required" ,"position": 1},
+                            {  "id": "2425863403" ,  "text": "No" ,"position": 2 }
+                            ] 
+                        } ]
                   },
                   "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536880/questions/367206415",
-                  "headings": [
-                      {
-                     "heading": "RISK ASSESSMENTS"
-                      }
-                  ],
+                  "headings": [{"heading": "RISK ASSESSMENTS"}],
                   "validation": null,
-                  "id": "367206415"
-                  
+                  "id": "367206415"                
               },
               { "family": "single_choice",
                   "subtype": "vertical",
                   "required": null,
                   "answers": {
-                      "other": {
-                     "text": "Mastercare / Communicare Client Reference Number:",
-                     "id": "2425863442",
-                     "visible": false,
-                    
-                     "is_answer_choice": true,
-                     
-                     "num_chars": 50,
-                     "error_text": "Please enter a comment.",
-                     "num_lines": 1
+                     "other": {
+                        "text": "Mastercare / Communicare Client Reference Number:",
+                        "id": "2425863442",
+                        "visible": false,
+                        "is_answer_choice": true,
+                        "num_chars": 50,
+                        "error_text": "Please enter a comment.",
+                        "num_lines": 1
                       },
-                      "choices": [
-                     { "text": "Client established in Mastercare / Communicare", "id": "2425863441" }, { "text": "Risk Assessments Completed (if indicated)", "id": "2425863461" },
-                      { "text": "ANSA Initial Assessment Booked", "id": "2425863460"
-                     }
-                      ]
+                      "choices": [ { "text": "Client established in Mastercare / Communicare", "id": "2425863441" }, 
+                                  { "text": "Risk Assessments Completed (if indicated)", "id": "2425863461" },
+                                  { "text": "ANSA Initial Assessment Booked", "id": "2425863460" } ]
                   },
-                  "href": "https://api.surveymonkey.net/v3/surveys/271875304/pages/100536880/questions/367206411",
-                  "headings": [
-                      {
-                     "heading": "CHECKLIST:"
-                      }
-                  ],
+                  "headings": [  { "heading": "CHECKLIST:" }],
                   "validation": null,
-                  "id": "367206411"
-                  
+                  "id": "367206411"                  
               }
           ],
-          "title": "OFFICE USE ONLY:",
-          
+          "title": "OFFICE USE ONLY:", 
           "id": "100536880",
           "question_count": 2
       }
   ],
-  "summary_url": "https://www.surveymonkey.com/summary/ysZzBbspFmATdX7XAO3u57dfqgMeQDGsYSDvY8T_2FMPw_3D",
   "href": "https://api.surveymonkey.net/v3/surveys/271875304",
-  "title": "ANSA Client Registration",
-  "collect_url": "https://www.surveymonkey.com/collect/list?sm=ysZzBbspFmATdX7XAO3u57dfqgMeQDGsYSDvY8T_2FMPw_3D",
-  "edit_url": "https://FMPw_3D"
+  "title": "ANSA Client Registration"
 }

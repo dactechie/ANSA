@@ -2,7 +2,7 @@ from .string_manip import clean, kclean
 from .slk import generate_slk
 from ..qna_mappings import surveys
 
-survey_type = "client_regisration"
+survey_type = "client_registration"
 survey_dict = surveys.get(survey_type)
 
 field_table = survey_dict["field_table"]
