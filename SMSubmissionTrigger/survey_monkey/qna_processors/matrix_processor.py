@@ -1,6 +1,6 @@
-from SMSubmissionTrigger.utils.converters import (storage_convertor,
+from ...utils.converters import (storage_convertor,
                                           get_text_by_idlist, get_idname_dict)
-from SMSubmissionTrigger.utils.string_manip import clean
+from ...utils.string_manip import clean
 
 
 def build_text_matrix_with_cols (schema):

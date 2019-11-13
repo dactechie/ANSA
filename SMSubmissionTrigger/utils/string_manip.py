@@ -20,6 +20,8 @@ printable = set(string.printable)
   not to be used when storing the JSON verbatim
 '''
 def kclean(string):
+  if not string:
+    return "<>"
   key = patParen.sub('', string).strip()
   return key
 

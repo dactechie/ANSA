@@ -1,11 +1,13 @@
 
-from SMSubmissionTrigger.utils.string_manip import clean
-from SMSubmissionTrigger.utils.converters import  get_text_by_idlist
+from ...utils.string_manip import clean
+from ...utils.converters import  get_text_by_idlist
 
 
 def get_text_qna_single_choice(schema_question, data):
   chosens = get_text_qna_mcq(schema_question, data)
-  return chosens[0]
+  if chosens:
+    return chosens[0]
+  return None
  
 
 def get_text_qna_mcq(schema_question, data):

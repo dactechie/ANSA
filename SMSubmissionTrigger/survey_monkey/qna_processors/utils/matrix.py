@@ -1,5 +1,5 @@
 
-from SMSubmissionTrigger.utils.string_manip import clean
+from  ....utils.string_manip import clean
 
 def handle_otherids(data_answers):
   results = {}

@@ -1,6 +1,6 @@
 
 
-from  SMSubmissionTrigger.utils.converters import  get_idname_dict
+from  ...utils.converters import  get_idname_dict
 
 
 def process_demographics(schema, data):

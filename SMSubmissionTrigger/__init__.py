@@ -1,5 +1,3 @@
-
-import json
 import logging
 import azure.functions as func
 
@@ -8,9 +6,11 @@ from .utils.http_post import forward_results
 from .utils.constants import survey_type
 from .survey_monkey.sm_api import get_survey_responses
 
-survey_type  = {"271875304": "client_registration", "271604360": "initial_assessment"}
+
+#survey_type  = {"271875304": "client_registration", "271604360": "initial_assessment"}
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
+
     logging.info('Python HTTP trigger function processed a request.')
 
     try:
@@ -25,19 +25,23 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
       sid = req_body['resources']['survey_id']
       rid = req_body['resources']['respondent_id']
 
-      stype = survey_type[sid]
-      fname = f"SMSubmissionTrigger/json/{stype}_schema.json"
-
-      with open(fname, "r") as file:
-        schema_json = json.load(file)
       
+      stype = survey_type[sid]
+
+      if stype is 'ITSP' :
+        from .schema.initial_assessment_schema import schema as schema_json
+        from .utils.constants import ITSP_LOGIC_APP_URI as uri
+      else:
+        from .schema.client_registration_schema import schema as schema_json
+        from .utils.constants import REGO_LOGIC_APP_URI as uri
+     
       survey_response = get_survey_responses(sid, rid)
       raw_answers = extract_response(schema_json, answers_json=survey_response, stype=stype)
       
       logging.info(raw_answers)
       print(raw_answers)
 
-      forward_results(raw_answers, stype) # forwards it to a logic app.
+      forward_results(raw_answers, uri) # forwards it to a logic app.
       
       # {'response_id': '11095161359', 'survey_id': '271875304', 'Country of Birth': 'India', 'Preferred Language': 'English', 
       # 'atsi': 'Torres Strait Islander but not Aboriginal origin', 'client_type': 'Own Alcohol and/or Drug Use', 

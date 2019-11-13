@@ -9,14 +9,16 @@ def test_extract(survey_id):
 
   stype = survey_type[survey_id]
 
-  schfname = f"SMSubmissionTrigger/json/{stype}_schema.json"
+  #schfname = f"SMSubmissionTrigger/json/{stype}_schema.json"
   
-  schema_json = None
+  from SMSubmissionTrigger.schema.client_registration_schema import schema as schema_json
+  #schema_json = None
   
-  with open(schfname, "r") as file:
-    schema_json = json.load(file)
+  # with open(schfname, "r") as file:
+  #   schema_json = json.load(file)
   
-  respfname = f"SMSubmissionTrigger/tests/response_from_gend_initassess.json"
+  #respfname = f"SMSubmissionTrigger/tests/response_from_gend_initassess.json"
+  respfname = f"SMSubmissionTrigger/tests/client_registration_response2.json"
   survey_response = None
   with open(respfname, "r") as file:
     survey_response = json.load(file)
@@ -26,5 +28,6 @@ def test_extract(survey_id):
 
 
 if __name__ == "__main__":
-    survey_id = "271604360"
+    survey_id = "271875304"
+    # survey_id = "271604360"
     test_extract(survey_id)

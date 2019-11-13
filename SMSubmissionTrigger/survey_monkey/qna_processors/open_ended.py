@@ -1,5 +1,5 @@
 
-from SMSubmissionTrigger.utils.string_manip import clean
+from ...utils.string_manip import clean
 
 def get_text_qna_open_ended(schema_question, data):
   if len(data['answers']) == 1:

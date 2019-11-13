@@ -1,5 +1,5 @@
 
-surveys = {
+survey_mappings = {
   "client_registration" : {
 
     "field_table" : {
@@ -36,7 +36,7 @@ surveys = {
   },
 
 
-  "initial_assessment" :{
+  "ITSP" :{
     
     "field_table": {
       "Assessment Date" : "surv_date",

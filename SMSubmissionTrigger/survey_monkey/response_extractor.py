@@ -1,10 +1,10 @@
 #import sys
 #import re
 
-from SMSubmissionTrigger.utils.string_manip import clean
-from SMSubmissionTrigger.utils.converters import storage_convertor
+from ..utils.string_manip import clean
+from ..utils.converters import storage_convertor
 from .qna_processors import qtype_handlers
-from ..qna_mappings import surveys
+from ..qna_mappings import survey_mappings
 
 # id_types = ['row_id', 'col_id', 'choice_id']
 # id_types_list_map = {'row_id':'rows' , 'col_id': 'cols', 'choice_id': 'choices'}
@@ -24,11 +24,12 @@ def extract_response(survey_schema, answers_json, stype=None):
   pages = answers_json['pages']
 
   # TODO insert datetime of the submission
-  pages.insert(0,[{'response_id' : answers_json['id'], 'survey_id' : answers_json['survey_id']}])
+  pages.insert(0,[{'survey_type': stype, 'response_id' : answers_json['id'], 
+                   'survey_id' : answers_json['survey_id']}])
   
   res = process_pages(survey_schema, pages)
 
-  survey_dict = surveys.get(stype)
+  survey_dict = survey_mappings.get(stype)
 
   field_table = survey_dict["field_table"]
   values_table = survey_dict["values_table"]
