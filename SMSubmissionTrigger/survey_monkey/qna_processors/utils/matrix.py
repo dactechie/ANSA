@@ -1,5 +1,5 @@
 
-from .utils.string_manip import clean
+from SMSubmissionTrigger.utils.string_manip import clean
 
 def handle_otherids(data_answers):
   results = {}
@@ -44,7 +44,8 @@ def handle_otherids(data_answers):
 
 '''
 
-ids_tuple = lambda answer, cols_choices:  ( answer.get('row_id') ,  (cols_choices[answer['col_id']] , answer['choice_id']))
+ids_tuple = lambda answer, cols_choices:  ( answer.get('row_id'), 
+                                            (cols_choices[answer['col_id']], answer['choice_id']))
 
 def get_ids_coltext(data_answers, cols, cols_choices, with_col_text: False):
   if with_col_text:
@@ -67,9 +68,7 @@ def handle_nocols(data_answers, rtext_dict, cols, cols_choices):
   # data answerrs now only has stuff WITH cols
 
   for idx in ids:
-    rid, col_choices_chid  = idx[1]
-
-    col_choices, choice_id = col_choices_chid
+    rid, (col_choices, choice_id)  = idx[1]
     rtext = rtext_dict[rid]    
      
     results [rtext] = clean(col_choices[choice_id]) 
@@ -78,8 +77,8 @@ def handle_nocols(data_answers, rtext_dict, cols, cols_choices):
 
 
 
-def handle_col_choices(data_answers):
-  results = {}
-  ids = get_ids_coltext (data_answers, cols, cols_choices, with_col_text=True)
+# def handle_col_choices(data_answers):
+#   results = {}
+#   ids = get_ids_coltext (data_answers, cols, cols_choices, with_col_text=True)
 
-  return results, data_answers
+#   return results, data_answers

@@ -4,9 +4,9 @@ from requests.exceptions import HTTPError
 from .constants import LOGIC_APP_URI
 
 
-def forward_results(results_json):
+def forward_results(results_json, survey_type):
   try:
-    r = requests.post(LOGIC_APP_URI, json=results_json)
+    r = requests.post(f"{LOGIC_APP_URI}&survey_type={survey_type}", json=results_json)
     # If the response was successful, no Exception will be raised
     r.raise_for_status()
     
