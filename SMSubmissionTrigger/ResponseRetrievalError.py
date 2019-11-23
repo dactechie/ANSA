@@ -1,0 +1,2 @@
+class ResponseRetrievalError (Exception):
+  pass

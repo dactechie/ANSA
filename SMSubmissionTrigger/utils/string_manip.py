@@ -22,7 +22,7 @@ printable = set(string.printable)
 def kclean(string):
   if not string:
     return "<>"
-  key = patParen.sub('', string).strip()
+  key = patParen.sub('', string).strip('*#^: ')
   return key
 
 def clean(string):

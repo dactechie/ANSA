@@ -21,35 +21,33 @@ from ..qna_mappings import survey_mappings
   survey_schema : json object
 '''
 def extract_response(survey_schema, answers_json, stype=None):
-  pages = answers_json['pages']
-
-  # TODO insert datetime of the submission
-  pages.insert(0,[{'survey_type': stype, 'response_id' : answers_json['id'], 
-                   'survey_id' : answers_json['survey_id']}])
+  pages = answers_json['pages']  
+  mapping_dict = survey_mappings.get(stype.qna_map_key)
   
-  res = process_pages(survey_schema, pages)
+  res = process_pages(survey_schema, pages, mapping_dict)
 
-  survey_dict = survey_mappings.get(stype)
-
-  field_table = survey_dict["field_table"]
-  values_table = survey_dict["values_table"]
-  bit_fields = survey_dict["bit_fields"]
-  skip_fields = survey_dict["skip_fields"]
-
+  field_table = mapping_dict["field_table"]
+  values_table = mapping_dict["values_table"]
+  bit_fields = mapping_dict["bit_fields"]
+  skip_fields = mapping_dict["skip_fields"]
 
   res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
-
+  meta = { 'meta':
+            {'survey_type': stype.qna_map_key, 'response_id' : answers_json['id'], 
+             'survey_id' : answers_json['survey_id'], 'edit_url' : answers_json['edit_url'],
+             'date_created': answers_json['date_created'], 'date_modified': answers_json['date_modified']}}
+  res = {**res, **meta}
   return res
 
 
 
-def process_question(schema_question, question):
-  question_text = clean(schema_question['headings'][0]['heading'])
+def process_question(schema_question, question, trans_dict):
+  
   results = None
   
   txt_replace_fn = qtype_handlers.get(schema_question['family'])
   if txt_replace_fn:
-    results = {question_text : txt_replace_fn(schema_question, question)}
+    results =  txt_replace_fn(schema_question, question, trans_dict)
     #print (results)
   else:
     print(f"\n\n...........family : {schema_question['family']}\n\n")
@@ -62,7 +60,7 @@ def schema_for_question_id(schema_questions, response_qid):
   return next(sq for sq in schema_questions if sq['id'] == response_qid)
 
 
-def process_page(sch_qs, response_qs):
+def process_page(sch_qs, response_qs, trans_dict):
 
   q_schemas__respq = [(schema_for_question_id(sch_qs, resp_q['id']), resp_q) 
                         for resp_q in response_qs]
@@ -70,19 +68,29 @@ def process_page(sch_qs, response_qs):
   # some questions may not have been answered, filter them out
   q_schemas__respq = filter(lambda qs: qs[0] != None, q_schemas__respq)
 
-  return [process_question(q_schema, resp_q)
-            for q_schema, resp_q in q_schemas__respq]
+  qna = {}
+  for q_schema, resp_q in q_schemas__respq:
+    question_text = clean(q_schema['headings'][0]['heading'])
+    if qna.get(question_text):
+      qna[question_text].append(process_question(q_schema, resp_q, trans_dict))
+    else:
+      qna[question_text] = process_question(q_schema, resp_q, trans_dict)
+
+  return qna
  
     
 
-def process_pages(qna_id_defs, pages):
+def process_pages(qna_id_defs, pages, trans_dict):
 
-  results = [pages.pop(0)] # meta information like date_Created, survey_id , response_id 
+  
+  results = {} # {'meta' : pages.pop(0)} # meta information like date_Created, survey_id , response_id 
 
   for counter, page in enumerate(pages):
     res = process_page(qna_id_defs['pages'][counter]['questions'],
-                       page['questions'])
-    results.append(res)
+                       page['questions'], trans_dict)
+    page_title = qna_id_defs['pages'][counter]['title']
+    results[page_title] = res
+    #results.append(res)
 
   return results
 
