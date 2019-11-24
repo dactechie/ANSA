@@ -8,6 +8,23 @@ from .survey_monkey.sm_api import get_survey_responses
 from .ResponseRetrievalError import ResponseRetrievalError
 
 
+def build_context(data):
+  # get survey responses
+
+  # if TSS
+  #   construct and fire a request to google sheets -> ADOM
+  # else
+  #   construct ATOP JSON to be inserted into the excel sheet (which is setup to plot the results)
+  pass
+
+def do_sub_tasks(context):
+  # try:
+  #   context.do_sub_tasks()
+  # except:
+
+  pass
+
+
 def main(req: func.HttpRequest) -> func.HttpResponse:
 
     logging.info('Python HTTP trigger function processed a request.')
@@ -15,13 +32,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
 
       req_body = req.get_json()
-      
-      if req_body['event_type'] != 'response_completed':
-        # handle_incomplete_request
-        # lookup DB
-        # email the edit URL to staff  (with incomplete resuls ?)
-        logging.error('Survey not completed')
-        return None
+      logging.info(f"Webhook fired with data: {req_body} \n")
       
       sid = req_body['resources']['survey_id']
       rid = req_body['resources']['respondent_id']
@@ -32,8 +43,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
       if 'error' in survey_response: #['error']['http_status_code']         
         raise ResponseRetrievalError({'msg' : "Error while retrieving survey response."})
 
-      raw_answers = extract_response(stype.schema, answers_json=survey_response, stype=stype)
+      raw_answers, errors = extract_response(stype.schema, answers_json=survey_response, stype=stype)
+      if errors:
+        print (errors)
       
+
       logging.info(raw_answers)
       print(raw_answers)
       
@@ -62,7 +76,17 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     
     return func.HttpResponse("Successful",  status_code=200)
 
-      
+  
+
+        # note: it nnever comes here, b/c thois webhook is only fired when "done" is clicked
+      # if req_body['event_type'] != 'response_completed':  
+      #   # handle_incomplete_request
+      #   # lookup DB
+      #   # email the edit URL to staff  (with incomplete resuls ?)
+      #   logging.error('Survey not completed')
+      #   return None
+
+
       # {'response_id': '11095161359', 'survey_id': '271875304', 'Country of Birth': 'India', 'Preferred Language': 'English', 
       # 'atsi': 'Torres Strait Islander but not Aboriginal origin', 'client_type': 'Own Alcohol and/or Drug Use', 
       # 'ReferralSource': 'Other community/health care service', 'PDC': 'Benzodiazepines - non-prescribed', 

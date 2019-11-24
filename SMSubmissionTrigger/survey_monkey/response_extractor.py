@@ -10,6 +10,19 @@ from ..qna_mappings import survey_mappings
 # id_types_list_map = {'row_id':'rows' , 'col_id': 'cols', 'choice_id': 'choices'}
 
 # meta data to store 
+def extract_meta(team_staff_dict, answers_json, survey_type):
+
+  staff_name = team_staff_dict.get("Your Contact").get("Team Member")
+  staff_name =  staff_name.replace(" ",".",1).strip()
+  staff_email = f"{staff_name}@directionshealth.com"
+
+  return { 'meta':
+            {'survey_type': survey_type, 'response_id' : answers_json['id'], 
+             'survey_id' : answers_json['survey_id'], 'edit_url' : answers_json['edit_url'],
+             'date_created': answers_json['date_created'], 'date_modified': answers_json['date_modified'],
+             'staff_email': staff_email, 'is_partial': False}
+          }
+
 '''
 "href": "https://api.surveymonkey.net/v3/surveys/271026860/responses/11075389573",
  "date_created": "2019-10-18T00:34:54+00:00", 
@@ -21,6 +34,7 @@ from ..qna_mappings import survey_mappings
   survey_schema : json object
 '''
 def extract_response(survey_schema, answers_json, stype=None):
+  errors = []
   pages = answers_json['pages']  
   mapping_dict = survey_mappings.get(stype.qna_map_key)
   
@@ -33,15 +47,22 @@ def extract_response(survey_schema, answers_json, stype=None):
 
   res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
   
-  if 'custom_variables' in answers_json:
+  if 'custom_variables' in answers_json and 'client_id' in answers_json['custom_variables']:
     res['client_id'] = answers_json['custom_variables'].get('client_id')
-
-  meta = { 'meta':
-            {'survey_type': stype.qna_map_key, 'response_id' : answers_json['id'], 
-             'survey_id' : answers_json['survey_id'], 'edit_url' : answers_json['edit_url'],
-             'date_created': answers_json['date_created'], 'date_modified': answers_json['date_modified']}}
+  elif res['DEMOGRAPHICS']['client_id']:
+    res['client_id'] = res['DEMOGRAPHICS']['client_id']
+  else:
+    errors.append("MissingClientID")
+  
+  # else:
+  #   res['client_id'] = res['DEMOGRAPHICS']['client_id'] # it was typed into the form?  -> remove the need for this, the URL would always insert it.
+  
+  meta = extract_meta(res['DEMOGRAPHICS'].get('team_staff'), answers_json, stype.qna_map_key)
+  #staff_name = res['DEMOGRAPHICS'].get('team_staff').get("Your Contact").get("Team Member")
   res = {**res, **meta}
-  return res
+
+  #res['errors'] = ",".join(errors)
+  return res, errors
 
 
 

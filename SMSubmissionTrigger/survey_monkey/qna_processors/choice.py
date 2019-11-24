@@ -24,4 +24,4 @@ def get_text_qna_mcq(schema_question, data, trans_dict):
     if anstext:
       chosens.append(anstext[0])
 
-  return chosens #{q: chosens}
+  return  ",".join(chosens) #{q: chosens}
