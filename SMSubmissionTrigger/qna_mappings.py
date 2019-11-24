@@ -57,7 +57,7 @@ survey_mappings = {
       
       "Assessment Date" : "surv_date",
       "Your Directions / Pathways Details:" : "Team.Staff",
-      "SLK / Client ID": "cid",
+      "SLK/Client ID": "client_id",
       "How many days in the last 4 weeks?" : 'ndaysconsumed',
       "Principal Substance of Concern and Method of Use": "pdcmthd",
       "Other substances of concern" :"odc",

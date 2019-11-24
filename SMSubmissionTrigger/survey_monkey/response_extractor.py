@@ -32,6 +32,10 @@ def extract_response(survey_schema, answers_json, stype=None):
   skip_fields = mapping_dict["skip_fields"]
 
   res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
+  
+  if 'custom_variables' in answers_json:
+    res['client_id'] = answers_json['custom_variables'].get('client_id')
+
   meta = { 'meta':
             {'survey_type': stype.qna_map_key, 'response_id' : answers_json['id'], 
              'survey_id' : answers_json['survey_id'], 'edit_url' : answers_json['edit_url'],
