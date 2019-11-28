@@ -2,6 +2,9 @@ from .string_manip import clean, kclean
 from .slk import generate_slk
 
 
+'''
+  For heaven's sake, find a better soluton than this !!
+'''
 def merge_dicts(data_arr):
   results = {}
   if isinstance(data_arr, dict):
@@ -20,12 +23,10 @@ def merge_dicts(data_arr):
   return results
 
 
-def mapto_storage_kv_dict(arb_dict: dict, fields, values, bit, skip) -> dict:
-  results = {}
+def get_good_fieldvals(arb_dict, fields, skip):
 
-  for k, v in arb_dict.items():
-    vv = v
-    if not vv:
+  for k, val in arb_dict.items():  
+    if not val:
       continue
     
     field = kclean(k)
@@ -33,13 +34,17 @@ def mapto_storage_kv_dict(arb_dict: dict, fields, values, bit, skip) -> dict:
     if field in skip:
       continue
 
+    yield field, val
+
+
+def mapto_storage_kv_dict(arb_dict: dict, fields, values, bit, skip) -> dict:
+  results = {}
+
+  for field, val in get_good_fieldvals(arb_dict, fields, skip):
+    vv = val
+
     if isinstance(vv, dict) :
-      # if isinstance(next(iter(vv.values())), dict):
-      #   print("cam here ")
       r = mapto_storage_kv_dict(vv, fields, values, bit, skip)
-      # if k == 'AOD History':
-      #   results = { **results, 'AOD History': merge_dicts(r)  }
-      # else:
       results = {**results, field: merge_dicts(r) }
       continue
     elif isinstance(vv, list):
@@ -71,15 +76,9 @@ def mapto_storage_kv_list(arb_list: list, fields, values, bit, skip) -> list:
   results = []
   for item in arb_list:
     if isinstance(item, dict):
-      # if 'AOD History' in item:
-      #   results.append(item)
-      #   continue
       r = mapto_storage_kv_dict(item, fields, values, bit, skip)
       if r:
         results.append(r)
-    # elif isinstance(item, list):
-    #   newlist = get_storage_kv_list(item)
-    #   results = results + newlist
     else:
       results.append(values.get(item, item))
 

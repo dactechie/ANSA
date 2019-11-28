@@ -4,15 +4,16 @@
 from ..utils.string_manip import clean
 from ..utils.converters import storage_convertor
 from .qna_processors import qtype_handlers
-from ..qna_mappings import survey_mappings
+#from ..qna_mappings import survey_mappings
+
 
 # id_types = ['row_id', 'col_id', 'choice_id']
 # id_types_list_map = {'row_id':'rows' , 'col_id': 'cols', 'choice_id': 'choices'}
 
 # meta data to store 
-def extract_meta(team_staff_dict, answers_json, survey_type):
+def extract_meta(data, answers_json, survey_type):
 
-  staff_name = team_staff_dict.get("Your Contact").get("Team Member")
+  staff_name = data['DEMOGRAPHICS']['staff']
   staff_name =  staff_name.replace(" ",".",1).strip()
   staff_email = f"{staff_name}@directionshealth.com"
 
@@ -35,10 +36,19 @@ def extract_meta(team_staff_dict, answers_json, survey_type):
 '''
 def extract_response(survey_schema, answers_json, stype=None):
   errors = []
-  pages = answers_json['pages']  
-  mapping_dict = survey_mappings.get(stype.qna_map_key)
+  pages = answers_json['pages']
+  
+  if stype.qna_map_key is 'client_registration':
+    from ..schema.qna_mapping.client_registration import survey_mappings as mapping_dict
+  else:
+    from ..schema.qna_mapping.initial_assessment import survey_mappings as mapping_dict
+
+  #mapping_dict = survey_mappings.get(stype.qna_map_key)
+  mapping_dict = mapping_dict[0]  # not sure why ??!
   
   res = process_pages(survey_schema, pages, mapping_dict)
+  
+
 
   field_table = mapping_dict["field_table"]
   values_table = mapping_dict["values_table"]
@@ -47,9 +57,13 @@ def extract_response(survey_schema, answers_json, stype=None):
 
   res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
   
+  
+  for func in mapping_dict['struct_transform_funcs']:
+    res = func(res)
+
   if 'custom_variables' in answers_json and 'client_id' in answers_json['custom_variables']:
     res['client_id'] = answers_json['custom_variables'].get('client_id')
-  elif res['DEMOGRAPHICS']['client_id']:
+  elif 'client_id' in res['DEMOGRAPHICS']:
     res['client_id'] = res['DEMOGRAPHICS']['client_id']
   else:
     errors.append("MissingClientID")
@@ -57,7 +71,7 @@ def extract_response(survey_schema, answers_json, stype=None):
   # else:
   #   res['client_id'] = res['DEMOGRAPHICS']['client_id'] # it was typed into the form?  -> remove the need for this, the URL would always insert it.
   
-  meta = extract_meta(res['DEMOGRAPHICS'].get('team_staff'), answers_json, stype.qna_map_key)
+  meta = extract_meta(res, answers_json, stype.qna_map_key)
   #staff_name = res['DEMOGRAPHICS'].get('team_staff').get("Your Contact").get("Team Member")
   res = {**res, **meta}
 

@@ -6,7 +6,7 @@ from .utils.http_post import forward_results
 from .utils.constants import survey_type
 from .survey_monkey.sm_api import get_survey_responses
 from .ResponseRetrievalError import ResponseRetrievalError
-
+from .db import mydb, operations as dbops
 
 def build_context(data):
   # get survey responses
@@ -47,6 +47,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
       if errors:
         print (errors)
       
+      collection = mydb[stype.qna_map_key]
+      dbops.insert(collection,raw_answers['client_id'],raw_answers)
 
       logging.info(raw_answers)
       print(raw_answers)

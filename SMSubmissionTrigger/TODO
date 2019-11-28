@@ -1,0 +1,22 @@
+
+
+- SLK Generator PowerApp
+    v1: SLK + Link generator .. Wohoo !
+    
+  Future versions : 
+    v1.5: Add tracking query parameter -> 
+    v2: SLK <-> Name, mapping stored in CDS
+  
+
+- Error situations - e.g. Missing Client ID  - report to client / how ? How to continue
+  - if client-ID is not passed in, show the SLK field (careful about letting user entry here - no validation in SM)
+    - email sent to staff with completed Word ITSP document and a warning message to let MJ know about it.
+    - MJ to find the randomly generated ID in Cosmos and give it the correct SLK
+
+
+DevOps
+--------
+
+- Deployment slots - staging,  prod
+
+

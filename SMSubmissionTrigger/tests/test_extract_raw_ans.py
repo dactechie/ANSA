@@ -3,11 +3,11 @@ import json
 import pprint
 from SMSubmissionTrigger.survey_monkey.response_extractor import extract_response
 from SMSubmissionTrigger.utils.constants import survey_type
-from SMSubmissionTrigger.db import mycol, insert, find_latest_client_record
+from SMSubmissionTrigger.db import mydb, insert, find_latest_client_record
 
 
-def findlatest(client_id):
-  last = find_latest_client_record(mycol, client_id)
+def findlatest(collection_ref, client_id):
+  last = find_latest_client_record(collection_ref, client_id)
   for x in last:
     print(x)
 
@@ -38,20 +38,26 @@ def test_extract(survey_id):
   
 
 def process(data):
-  with open("b.json", "w") as wrfile:
+  survey_type =  data["meta"]["survey_type"]
+  client_id =  data["client_id"]
+  date_mod =  data["meta"]["date_modified"].replace(":","") [:17]
+
+  file_name = f"raw_responses/{survey_type}_{client_id}_{date_mod}.json"
+  with open(file_name, "w") as wrfile:
     json.dump(data, wrfile)
   #pprint.pprint(data)
   
 
-def insert_data(data):
+def insert_data(data, survey_type):
   client_id = data['DEMOGRAPHICS']['client_id']  
-  insert(mycol, client_id ,data)
+  collection = mydb[survey_type]
+  insert(collection, client_id ,data)
 
 
 
 if __name__ == "__main__":
-    #survey_id = "271875304"
-    survey_id = "271604360"
+    survey_id = "271601477"
+    #survey_id = "271604360"
 
     data , errors = test_extract(survey_id)    
     #pprint.pprint(data)

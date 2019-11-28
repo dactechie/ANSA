@@ -1,62 +1,9 @@
 survey_mappings = {
-  "client_registration" : {
-
-    "field_table" : {
-      "Medicare Number": "medicare",
-      "SLK / Client ID": "cid",
-      "Do you have a health care card?":"hcc",
-      "Did you gamble at all in the past 4 weeks (28 days)?": "gamble",
-      "Do you suffer from any allergies?": "allerg",
-      "Have you ever been hospitalised for a mental health issue?": "hospment",
-      
-      "Are you accessing support from any other services at the moment?": "othrserv",
-
-
-      'Your Contact' : 'Team.Staff',
-      'Your Nominated Emergency Contact':'emrgncy',
-      #'Country of Birth': 'COB',
-      'Date of birth':'dob',
-      'Indigenous Status': 'atsi',
-      'Client Type': 'clnttyp',
-      #'Preferred Language': ''
-      'Gender Identity': 'gender',
-      'How were you referred to Pathways/Directions?': 'refsrc',
-      'Main Substance of Concern' :'PDC',
-      'Other substance of concern 1': 'ODC1',
-      'Other substance of concern 2': 'ODC2',
-      'Other substance of concern 3': 'ODC3',
-      'Other substance of concern 4': 'ODC4',
-      'Other substance of concern 5': 'ODC5',
-      'Any other addictive behaviours that concern you?': 'othraddictbhvr',
-      'Any indication of suicidal ideation or history?': 'risk_suicide',
-      'Any indication of domestic/family violence?': 'risk_dv',
-      'Do you have any immediate concerns for the safety and wellbeing of either yourself or others?': 'sftycncrn',
-      'Are you experiencing any current thoughts of death/dying or hurting yourself?': 'thghtslfhrm',
-      "Discussion about Directions' services Initial support identified": 'svcsidd',
-      'SERVICE GOALS What are your goals regarding alcohol/drug use?': 'svcgoals',
-      
-      
-    },
-    "values_table" : {
-      'Reduce the harmfulness of my use' : 'ReduceHarmfulness',
-      'Not really wanting to change my use at all': 'NotWantChange',
-      "Manage the impact of other's alcohol/drug use": 'ManageImpactOthers',
-      "Consent to Share Information authority completed" : 'ConsentShareInfo',
-      
-      
-      
-    },
-    "bit_fields" : ['risk_dv' ,'risk_suicide'],
-    "skip_fields" : [ 'Contact Information', 'EmergencyContact']
-  },
-
-
-  "initial_assessment" :{
-    
+    "struct_transform_funcs": (),
     "field_table": {
       
       "Assessment Date" : "surv_date",
-      "Your Directions / Pathways Details:" : "Team.Staff",
+      "Your Directions/Pathways Details" : "team_staff",
       "SLK/Client ID": "client_id",
       "How many days in the last 4 weeks?" : 'ndaysconsumed',
       "Principal Substance of Concern and Method of Use": "pdcmthd",
@@ -122,7 +69,7 @@ survey_mappings = {
       "Any indication of mental health risks?": "risk_ment",
 
       "MENTAL HEALTH & WELLBEING - CURRENT ISSUES Notes for ITSP": "ni_sum_ment",
-      "MENTAL HEALTH & WELLBEING - GOALS Notes for ITSP": "ni_goals_ment",      
+      "MENTAL HEALTH & WELLBEING - GOALS Notes for ITSP": "ni_goals_ment",
       "Social/Community Connections Do you have family and/or social connections who are positive and supportive? Are you involved in your community?":"socommconn",
       "How often does your substance use lead to problems or arguments with family members or friends?": "famprob",
       "Has anyone been violent or abusive towards you?": "violtoyou",
@@ -170,30 +117,3 @@ survey_mappings = {
     "sections" : ["AOD History"]
 
   }
-  
-}
-
-# from pprint import pprint
-
-def without_keys(src_dict, not_allowed_keys):
-  return {x: src_dict[x] for x in src_dict if x not in not_allowed_keys}
-
-not_in_itsp_review = {"Have you ever previously accessed alcohol and / or drug treatment?",
-                      "What is your highest level of education?",
-                      "What is your principal income source?",
-                      "Do you have a GP or medical centre that you regularly attend?",
-                      "Have you ever been diagnosed with a mental health issue?",
-                      "Have you served a custodial sentence in the past?"
-                     }
-
-ini_as = survey_mappings['initial_assessment']
-
-itsp_review = { **ini_as['values_table'], 'bit_fields' : ini_as['bit_fields']}
-
-itsp_review['field_table'] = without_keys(
-                                ini_as['field_table'],
-                                not_in_itsp_review)
-
-survey_mappings['itsp_review'] = itsp_review
-
-# pprint(itsp_review)

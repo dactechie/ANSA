@@ -4,6 +4,12 @@
   "azureFunctions.projectLanguage": "Python",
   "azureFunctions.projectRuntime": "~2",
   "debug.internalConsoleOptions": "neverOpen",
-  "azureFunctions.preDeployTask": "func: pack",
-  "python.pythonPath": "c:\\Users\\aftab.jalal\\dev\\ANSA\\.venv\\Scripts\\python.exe"
+  "azureFunctions.preDeployTask": "func: pack --build-native-deps",
+  "python.pythonPath": "c:\\Users\\aftab.jalal\\dev\\ANSA\\.venv\\Scripts\\python.exe",
+  "python.testing.pytestArgs": [
+    "SMSubmissionTrigger"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestEnabled": true
 }

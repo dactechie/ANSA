@@ -9,7 +9,7 @@ client = pymongo.MongoClient(uri)
 
 #print(client.list_database_names())
 mydb = client["ansa"]
-mycol = mydb["initial_assessment"]
+#mycol = mydb["initial_assessment"]
 
 ###############
 # data = None
@@ -18,7 +18,3 @@ mycol = mydb["initial_assessment"]
 
 
 ###############
-
-
-
-
