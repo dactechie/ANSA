@@ -43,21 +43,15 @@ def extract_response(survey_schema, answers_json, stype=None):
   else:
     from ..schema.qna_mapping.initial_assessment import survey_mappings as mapping_dict
 
-  #mapping_dict = survey_mappings.get(stype.qna_map_key)
-  mapping_dict = mapping_dict[0]  # not sure why ??!
-  
   res = process_pages(survey_schema, pages, mapping_dict)
   
-
-
   field_table = mapping_dict["field_table"]
   values_table = mapping_dict["values_table"]
   bit_fields = mapping_dict["bit_fields"]
   skip_fields = mapping_dict["skip_fields"]
 
   res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
-  
-  
+    
   for func in mapping_dict['struct_transform_funcs']:
     res = func(res)
 

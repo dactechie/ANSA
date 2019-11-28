@@ -1,5 +1,8 @@
+from .struct_transformers import flatten_demographics, flatten_official_use
+from .struct_transformers.initial_assessment import  flatten_substance_use
+
 survey_mappings = {
-    "struct_transform_funcs": (),
+    "struct_transform_funcs": (flatten_demographics, flatten_official_use, flatten_substance_use),
     "field_table": {
       
       "Assessment Date" : "surv_date",
@@ -23,7 +26,7 @@ survey_mappings = {
       "How difficult would you find it to stop or go without your substance of concern?" : "diffstop",
       "AOD Harms/Risks In the last 4 weeks, have you experienced any of the following risks?" : "exprisk",
       "Have you ever previously accessed alcohol and/or drug treatment?" : "prevassess",
-      "Did you gamble at all in the last 4 weeks ?": "gamble",
+      "Did you gamble at all in the last 4 weeks ?": "gamble", #TODO make similar to rego :not Last but Past 4 weeks
       "Did you engage in any other addictive behaviours in the last 4 weeks?": "addictiveb",
       "Impact on Daily Living During the last 4 weeks, how often has your substance use  impacted on your work or other daily living activities ?":"impactliving",
       "SUBSTANCE USE - CURRENT ISSUES Notes for ITSP":"ni_sum_pres_issues",

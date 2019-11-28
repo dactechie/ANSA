@@ -85,18 +85,6 @@ def mapto_storage_kv_list(arb_list: list, fields, values, bit, skip) -> list:
   return results
 
 
-def flatten_pages(pages):
-  flattened_pages = []
-  
-  for page in pages:
-    flattened_pages.extend(page)
-    
-  return flattened_pages
-
-
-# def flatten_hard_vals(data):
-#   hardval_keys = ['client_id', 'safety_concern' , 'thoughts_selfharm', 'risk_suicide', 'risk_dv']
-#def storage_demog():
 def storage_convertor(arb_list, fields, values, bit, skip):
   results = {}
   for page_title, qna_dict in arb_list.items():
@@ -112,95 +100,8 @@ def storage_convertor(arb_list, fields, values, bit, skip):
     if page_result:
       results[page_title] = page_result #merge_dicts(page_result) 
 
-  # if 'Team.Staff'in results:
-  #   results['team'], results['staff'] = results['Team.Staff']
-  #   del results['Team.Staff']
-
-  #   results['PDC'], results['method_of_use'] = results['PDC']
-
-  #   slk = generate_slk(results['Name'], results['dob'], results['gender'])
-  #   results['client_id'] = slk
-
-  #   del results['Name'], results['dob'], results['gender']
-
   return results
 
-
-
-def storage_convertor2(arb_list, fields, values, bit, skip):
-  results = {}
-  for page in arb_list:
-
-    page_title  = list(page)[0]
-    page_qna = page[page_title]
-    page_result = None#[]
-
-    if isinstance(page_qna, dict):
-      r = mapto_storage_kv_dict(page_qna, fields, values, bit, skip)
-      if r:
-        page_result = r
-        #page_result.append(r)
-    elif isinstance(page_qna, list):
-      r = mapto_storage_kv_list(page_qna, fields, values, bit, skip)
-      page_result = r #.append(r)
-    
-    # for item in page_qna:
-    #   if isinstance(item, dict):
-    #     r = mapto_storage_kv_dict(item, fields, values, bit, skip)
-    #     if r:
-    #       page_result.append(r)
-    #   elif isinstance(item, list):
-    #     r = mapto_storage_kv_list(item, fields, values, bit, skip)
-    #     page_result.append(r)
-
-
-
-    #page_result = flatten_pages(page_result)
-    #page_result = merge_dicts(page_result)
-
-    # if 'Team.Staff'in page_result:
-    #   page_result['team'], page_result['staff'] = page_result['Team.Staff']
-    #   del page_result['Team.Staff']
-
-    #   page_result['PDC'], page_result['method_of_use'] = page_result['PDC']
-
-    #   slk = generate_slk(page_result['Name'], page_result['dob'], page_result['gender'])
-    #   page_result['client_id'] = slk
-
-    #   del page_result['Name'], page_result['dob'], page_result['gender']
-
-    results[page_title] = page_result
-    
-  return results
-
-
-# def storage_convertor(arb_list, fields, values, bit, skip):
-#   results = []
-#   for item in arb_list:
-#     if isinstance(item, dict):
-#       r = mapto_storage_kv_dict(item, fields, values, bit, skip)
-#       if r:
-#         results.append(r)
-#     elif isinstance(item, list):
-#       r = mapto_storage_kv_list(item, fields, values, bit, skip)
-#       results.append(r)
-
-#   results = flatten_pages(results)
-#   results = merge_dicts(results)
-
-#   if 'Team.Staff'in results:
-#     results['team'], results['staff'] = results['Team.Staff']
-#     del results['Team.Staff']
-
-#     results['PDC'], results['method_of_use'] = results['PDC']
-
-#     slk = generate_slk(results['Name'], results['dob'], results['gender'])
-#     results['client_id'] = slk
-
-#     del results['Name'], results['dob'], results['gender']
-
-#   return results
-    
 
 def get_text_by_idlist(idlist, dict_array):
   return (clean(dct['text']) for dct in dict_array if dct['id'] in idlist)

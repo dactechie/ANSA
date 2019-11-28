@@ -1,4 +1,5 @@
-from .struct_transformers.client_registration import flatten_demographics, flatten_substance_use, flatten_official_use
+from .struct_transformers import flatten_demographics, flatten_official_use
+from .struct_transformers.client_registration import  flatten_substance_use
 
 survey_mappings = {
     
@@ -52,4 +53,4 @@ survey_mappings = {
     },
     "bit_fields" : ['risk_dv' ,'risk_suicide'],
     "skip_fields" : [ 'Contact Information', 'EmergencyContact']
-  },
+  }
