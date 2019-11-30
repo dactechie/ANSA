@@ -1,8 +1,10 @@
-from .struct_transformers import flatten_demographics, flatten_official_use
-from .struct_transformers.initial_assessment import  flatten_substance_use
+from .struct_transformers import flatten_team_staff, flatten_official_use
+from .struct_transformers.initial_assessment import  (flatten_substance_use, flatten_everyday_living,
+                                                     flatten_substance_impact, flatten_aod_history)
 
 survey_mappings = {
-    "struct_transform_funcs": (flatten_demographics, flatten_official_use, flatten_substance_use),
+    "struct_transform_funcs": (flatten_team_staff, flatten_official_use,  flatten_everyday_living,
+                                 flatten_substance_use, flatten_substance_impact, flatten_aod_history),
     "field_table": {
       
       "Assessment Date" : "surv_date",
@@ -53,11 +55,8 @@ survey_mappings = {
       "In the past 4 weeks have you been in hospital or needed to call an ambulance?" : "ambu",
       "Are you currently taking any medications?": "medications",
       "Do you suffer from any allergies?": "allerg",
-
-
       
-      # "Health Checklist"
-      
+      # "Health Checklist"      
       "PHYSICAL HEALTH & WELLBEING - CURRENT ISSUES Notes for ITSP": "ni_sum_welb",
       "PHYSICAL HEALTH & WELLBEING - GOALS Notes for ITSP":"ni_goals_welb",
       "How has your psychological/mental health been? Do you have moods, fears, emotions or other thoughts that concern you?":"mentrate",
@@ -65,9 +64,8 @@ survey_mappings = {
       "How often does your mental health create problems in your daily life?": "mentcauseprob",
       "Have you ever been diagnosed with a mental health issue?" : "diagment",
       "Have you have ever been hospitalised for a mental health issue?" : "hospment",
+      
       "Have you experienced any thoughts of death/dying or of hurting yourself?": "thoughtsofhurt",
-      
-      
       "Mental Health Risk Issues": "risk_ment_issues",
       "Any indication of mental health risks?": "risk_ment",
 
@@ -104,7 +102,20 @@ survey_mappings = {
         'How Often?': 'freq',
         'How much per day?': 'perday',
 
-      "Please select from the dropdown menu": "selection"
+      "Please select from the dropdown menu": "selection",
+      "List your order of priority 1 - 5": "p1_5",
+      
+      "Paid Work": "paidwork",
+      "Voluntary Work": "volwork",
+      "Looking after children": "lookafterchild",
+      "Other caregiving activities": "othercaregiving",
+      "How many days?": "ndays",
+
+      "Drugs & Drinking": "drugdrink",
+      "Hobbies, Sport & Recreation": "hobrec",
+      "Family & Home": "famhom",
+      "Me Time": "metime",
+      "Time Spent" :"ts",
 
     },
 
@@ -117,6 +128,5 @@ survey_mappings = {
     },
     "bit_fields" : ['injshare', 'wrkdevorder'],
     "skip_fields" : [ ],
-    "sections" : ["AOD History"]
 
   }

@@ -1,9 +1,9 @@
-from .struct_transformers import flatten_demographics, flatten_official_use
+from .struct_transformers import flatten_team_staff, flatten_official_use
 from .struct_transformers.client_registration import  flatten_substance_use
 
 survey_mappings = {
     
-    "struct_transform_funcs": (flatten_demographics, flatten_substance_use, flatten_official_use),
+    "struct_transform_funcs": (flatten_team_staff, flatten_substance_use, flatten_official_use),
 
     "field_table" : {
       "Medicare Number": "medicare",

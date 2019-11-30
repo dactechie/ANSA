@@ -4,9 +4,11 @@ import azure.functions as func
 from .survey_monkey.response_extractor import extract_response
 from .utils.http_post import forward_results
 from .utils.constants import survey_type
+from .utils.scores_answers import get_total_score
 from .survey_monkey.sm_api import get_survey_responses
 from .ResponseRetrievalError import ResponseRetrievalError
 from .db import mydb, operations as dbops
+
 
 def build_context(data):
   # get survey responses
@@ -44,11 +46,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         raise ResponseRetrievalError({'msg' : "Error while retrieving survey response."})
 
       raw_answers, errors = extract_response(stype.schema, answers_json=survey_response, stype=stype)
-      if errors:
-        print (errors)
       
-      collection = mydb[stype.qna_map_key]
-      dbops.insert(collection,raw_answers['client_id'],raw_answers)
+      if errors:
+        logging.error(errors)
+      
+      sds_key = "SDS - Severity of Dependence Scale"
+      raw_answers[sds_key]['sds_score'] = get_total_score(raw_answers[sds_key].values() )
+      
+      # collection = mydb[stype.qna_map_key]
+      # dbops.insert(collection,raw_answers['client_id'],raw_answers)
 
       logging.info(raw_answers)
       print(raw_answers)
