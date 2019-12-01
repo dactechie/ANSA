@@ -6,6 +6,7 @@ survey_mappings = {
     "struct_transform_funcs": (flatten_team_staff, flatten_substance_use, flatten_official_use),
 
     "field_table" : {
+      "Date": "surv_date",
       "Medicare Number": "medicare",
       "SLK / Client ID": "cid",
       "Do you have a health care card?":"hcc",

@@ -12,9 +12,12 @@ REGO_LOGIC_APP_URI ="https://prod-29.australiaeast.logic.azure.com:443/workflows
 #REGO_LOGIC_APP_URI = "https://prod-27.australiaeast.logic.azure.com:443/workflows/49ee573ec4214839a93c30e714d2bf24/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=J_l68JznTNaHpQO36-dcn56h2aldHMZlI7x9RWQ6dRw"
 
 logic_app = namedtuple("LogicApp",["qna_map_key", "uri", "schema"])
+                #271601477
+survey_type  = {"client_registration": logic_app (qna_map_key="client_registration", uri=REGO_LOGIC_APP_URI, schema=rego_schema_json),
+                #"271604360"
+                "initial_assessment": logic_app (qna_map_key="initial_assessment", uri=INITIAL_ASSESS_URI, schema=init_assess_schema),  
 
-survey_type  = {"271601477": logic_app (qna_map_key="client_registration", uri=REGO_LOGIC_APP_URI, schema=rego_schema_json),
-                "271604360": logic_app (qna_map_key="initial_assessment", uri=INITIAL_ASSESS_URI, schema=init_assess_schema),  
-               "271695569" : logic_app(qna_map_key="itsp_review", uri=ITSP_LOGIC_APP_URI, schema=init_assess_schema)               # TODO change the schema ....
+                #271695569
+               "itsp_review" : logic_app(qna_map_key="itsp_review", uri=ITSP_LOGIC_APP_URI, schema=init_assess_schema)               # TODO change the schema ....
               }
 

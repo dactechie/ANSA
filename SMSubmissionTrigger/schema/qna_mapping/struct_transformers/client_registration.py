@@ -14,20 +14,22 @@
   #         },
 
 def flatten_substance_use(data):
+  PLS_SLCT_DDBOX = "Please select from the dropbox"
   subs_dict = data['SUBSTANCE USE']
   pdc_dict = subs_dict['Principal Substance of Concern']['PDC']
-  pdc = pdc_dict["Please select from the dropbox"]
-  method = pdc_dict['Method of use Ingest/Smoke/Inject/Sniff/Inhale/Other']
 
-
-  subs_dict['PDC'] = pdc
-  subs_dict['pdcmthd'] = method
+  subs_dict['PDC'] =  pdc_dict[PLS_SLCT_DDBOX]
+  subs_dict['pdcmthd'] = pdc_dict['Method of use Ingest/Smoke/Inject/Sniff/Inhale/Other']
   del subs_dict['Principal Substance of Concern']
 
 
   other = subs_dict["Other Substances of Concern"]
   for odc_key, odc_dict in other.items():
-    subs_dict[odc_key] = odc_dict["Please select from the dropbox"]
+    subs_dict[odc_key] = odc_dict[PLS_SLCT_DDBOX]
+
+  # tmp = { odc_key: odc_dict[PLS_SLCT_DDBOX] for odc_key, odc_dict in other.items()}
+  # subs_dict = {**tmp, **subs_dict}
+
   del subs_dict["Other Substances of Concern"]
 
 

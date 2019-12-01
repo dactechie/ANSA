@@ -13,7 +13,7 @@ def findlatest(collection_ref, client_id):
     print(x)
 
 
-def test_extract(survey_id):
+def extract(survey_id):
 
   stype = survey_type[survey_id]
   respfname = None
@@ -21,7 +21,13 @@ def test_extract(survey_id):
   if stype.qna_map_key is 'initial_assessment' :
     from SMSubmissionTrigger.schema.initial_assessment_schema import schema as schema_json
     respfname = f"SMSubmissionTrigger/tests/initial_assessment_generated_response2.json"
+    ## TODO add logic
+    # if there was no registration done recently (__or if ep was marked as closed__), 
+    # then return error with advice: that have to  register first
+    # otherwise get the ClientREgistration ID from Mongo and stick it into the mongo and CDS IntialAssessment object
     
+    # Similarly,if there was no InitialAssessment, can't do ITSP review.
+
     #from SMSubmissionTrigger.schema.matrix_aod_history import schema as schema_json
     #from SMSubmissionTrigger.schema.text_matrix_rating_other import schema as schema_json
     
@@ -57,17 +63,16 @@ def process(data):
   
 
 def insert_data(data, survey_type):
-  client_id = data['DEMOGRAPHICS']['client_id']  
   collection = mydb[survey_type]
-  insert(collection, client_id ,data)
+  insert(collection, data)
 
 
 
 if __name__ == "__main__":
     survey_id = "271601477"
-    #survey_id = "271604360"
+   # survey_id = "271604360"
 
-    data , errors = test_extract(survey_id)    
+    data , errors = extract(survey_id)    
     #pprint.pprint(data)
     
     process(data)

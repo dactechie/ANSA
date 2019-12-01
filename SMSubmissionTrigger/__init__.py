@@ -39,7 +39,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
       sid = req_body['resources']['survey_id']
       rid = req_body['resources']['respondent_id']
 
-      stype = survey_type[sid]
+      stype = survey_type[req_body['name']]  # instead key it off the name of the calling webhook e.g.: ANSA_InitialAssessment_Webhook"
+                                
+      ## TODO add logic
+      # if there was no registration done recently (__or if ep was marked as closed__), 
+      # then return error with advice: that have to  register first
+      # otherwise get the ClientREgistration ID from Mongo and stick it into the mongo and CDS IntialAssessment object
+      
+      # Similarly,if there was no InitialAssessment, can't do ITSP review.
+
+      # can_proceed = stype['canproceed_func']()
+      # if not can_proceed:
+      #   throw CannotProceedError (canProceed)
        
       survey_response = get_survey_responses(sid, rid)
       if 'error' in survey_response: #['error']['http_status_code']         
@@ -50,11 +61,39 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
       if errors:
         logging.error(errors)
       
-      sds_key = "SDS - Severity of Dependence Scale"
-      raw_answers[sds_key]['sds_score'] = get_total_score(raw_answers[sds_key].values() )
-      
-      # collection = mydb[stype.qna_map_key]
-      # dbops.insert(collection,raw_answers['client_id'],raw_answers)
+      # calculate_comparetoprevious_outcomes  (even if only Client Registration  ?)
+      if stype.qna_map_key is not 'client_registration' :
+        sds_key = "SDS - Severity of Dependence Scale"
+        raw_answers[sds_key]['sds_score'] = get_total_score(raw_answers[sds_key].values() )
+
+      # survey_obj (can be of type Rego / Initial/ ITSP)
+
+      # stypeclazz = SurveyClasses [survey_response['custom_variables']['stype']]
+      # survey_obj = SurveyObjectFactory.create(stypeclazz ,survey_response)
+      # survey_object.extract_raw()         # static functions
+      # survey_object.retrieve_process_scores() #method in InitialAsses and ITSP versions 
+            
+      # collection_ref = mydb[stypeclazz.__name__]
+      # dbops.insert(collection_ref, survey_object/SO)
+        # inside dbops.insert :
+          # SO.Pre_insert():  
+            # in the client_reg_SO class nothign to do (client_id is already in the object)
+              # add "ep_start_date" ? thats just the client_reg created date
+            # in the initial_assessment_SO class add episode_id :
+              # get the last (Clients.episode_registrations for this client_id. 
+
+
+          # inserted_object_id = collection_ref.insert(SO)
+
+          # SO.post_insert  -> 
+              # in the client_reg_SO class, post_insert:
+                # clients_ref.insert({"episode_registrations"} add -> inserted_objectId)
+              # in the initial_assessment_SO class, post_insert:
+                # client_registration_ref.update({"initial_assessment"} -> inserted_objectId)
+              # in the ITSP_SO class, post_insert:
+                # initial_assessment_ref.insert({"ITSP_reviews"} add -> inserted_objectId)
+
+
 
       logging.info(raw_answers)
       print(raw_answers)

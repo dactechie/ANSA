@@ -7,7 +7,7 @@
   #     }
   #   },
 
-def flatten_demographics(data):
+def flatten_team_staff(data):
   demog_dict=  data['DEMOGRAPHICS']
   
   team_deets = demog_dict['team_staff']['Your Contact']

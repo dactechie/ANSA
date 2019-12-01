@@ -1,13 +1,14 @@
 
 from datetime import datetime
 
-def insert(collection_ref, client_id, data):
-  data['_id'] = client_id
+def insert(collection_ref, data):
+  #data['_id'] = client_id
   current_dt = datetime.now().strftime("%d/%m/%Y %H:%m:%S")
 
   data['meta']['insert_datetime'] =current_dt
   data['meta']['shard'] = current_dt[-1:]
   x = collection_ref.insert_one(data)
+  return x
   
 
 # collection_ref : mycol = mydb["initial_assessment"]
