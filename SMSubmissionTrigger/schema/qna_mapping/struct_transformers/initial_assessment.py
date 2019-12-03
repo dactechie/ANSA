@@ -29,7 +29,7 @@ def flatten_substance_use(data):
   
   pdc_dict = subs_dict['pdcmthd']['Principal Substance of Concern']
   subs_dict["PDC"] = pdc_dict['selection']
-  subs_dict['pdc_ndaysconsumed'] = int(pdc_dict["ndaysconsumed"])
+  subs_dict['pdc_ndaysconsumed'] = pdc_dict["ndaysconsumed"]
   subs_dict['pdcmthd'] = pdc_dict['method']
   
 
@@ -37,7 +37,7 @@ def flatten_substance_use(data):
                       "n" :  k[-1:],
                       "drug" : v['Please select from the dropbox'],
                       "method" : v['method'],
-                      "ndaysconsumed": int(v['ndaysconsumed'])
+                      "ndaysconsumed": v['ndaysconsumed']
                       }
                       for k , v in subs_dict["odc"].items()]
 
@@ -45,7 +45,7 @@ def flatten_substance_use(data):
   inj_dict = subs_dict['inj']['inj']
   subs_dict['injhwlong'] = inj_dict['injhwlong']
   subs_dict['injshare'] = inj_dict['injshare']
-  subs_dict['injdays'] = int(inj_dict['injdays'])
+  subs_dict['injdays'] = inj_dict['injdays']
   del subs_dict['inj']
 
   return data
@@ -73,10 +73,10 @@ def flatten_substance_use(data):
         # },
 
 def generize_dict(dct, numeric_fields=None) -> list:
-  if numeric_fields:
-    for v in dct.values():
-      for n in numeric_fields:
-        v[n] = int(v[n])
+  # if numeric_fields:
+  #   for v in dct.values():
+  #     for n in numeric_fields:
+  #       v[n] = int(v[n])
 
   result = {}
   for k, v in dct.items():
@@ -112,7 +112,7 @@ def flatten_everyday_living(data):
 def flatten_substance_impact(data):
   impct_addctv = data["IMPACT OF SUBSTANCE USE"]['addictiveb']
   
-  addictive = {f"{k}_ndays" : int(v['Number of Days'])            
+  addictive = {f"{k}_ndays" : v['Number of Days']
               for k,v in impct_addctv.items() if isinstance(v, dict)}
   
   del data["IMPACT OF SUBSTANCE USE"]['addictiveb']

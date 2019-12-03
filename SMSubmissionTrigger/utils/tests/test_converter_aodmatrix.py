@@ -31,13 +31,13 @@ processed_aodmatrix =  {'AOD History' :
   res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
 '''
 
-def test_storageconvertor_aodmatrix():
-  # def storage_convertor(arb_list, fields, values, bit, skip):
-  survey_type[]
-  field_table = mapping_dict["field_table"]
-  values_table = mapping_dict["values_table"]
-  bit_fields = mapping_dict["bit_fields"]
-  skip_fields = mapping_dict["skip_fields"]
+# def test_storageconvertor_aodmatrix():
+#   # def storage_convertor(arb_list, fields, values, bit, skip):
+#   survey_type[]
+#   field_table = mapping_dict["field_table"]
+#   values_table = mapping_dict["values_table"]
+#   bit_fields = mapping_dict["bit_fields"]
+#   skip_fields = mapping_dict["skip_fields"]
   
-  pages = 
-  storage_convertor(processed_aodmatrix)
+#   pages = 
+#   storage_convertor(processed_aodmatrix)

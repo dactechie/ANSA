@@ -76,7 +76,8 @@ def build_text_matrix_no_cols (schema): # answers schema
 
 #   ...
 
-
+# TODO : this continues after assigning result.. shouldn't it either append to a list of results or just return ?
+# if there are selections from (1) a list of choices  AND (2) "other" then we need both answers
 
 def process_matrix_no_cols(matrix_schema, data, trans_dict):
   rows, choices = build_text_matrix_no_cols (matrix_schema['answers'])

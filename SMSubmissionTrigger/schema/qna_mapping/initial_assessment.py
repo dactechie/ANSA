@@ -5,6 +5,15 @@ from .struct_transformers.initial_assessment import  (flatten_substance_use, fla
 survey_mappings = {
     "struct_transform_funcs": (flatten_team_staff, flatten_official_use,  flatten_everyday_living,
                                  flatten_substance_use, flatten_substance_impact, flatten_aod_history),
+
+    "incomplete_if_empty" : ("IMPACT OF SUBSTANCE USE.ni_goals", "HOUSING & SAFETY.ni_goals_housaft", 
+                            "EVERYDAY LIVING.ni_goals_livissu", 
+                            "PHYSICAL HEALTH & WELLBEING.ni_goals_welb", "MENTAL HEALTH & WELLBEING.ni_goals_ment",
+                            "LEGAL.ni_goals_legal"),
+
+    "numeric_fields" : ("injdays", "phyrate", "mentrate", "ndaysconsumed", "p1_5" ,"perday", "age1st", 
+                        "closemanag" ,"qolrate", "Sex_ndays",  "Number of Days"),
+
     "field_table": {
       # "DEMOGRAPHICS"
       "Assessment Date" : "surv_date",
@@ -12,6 +21,7 @@ survey_mappings = {
       "SLK/Client ID": "client_id",
 
       # SUBSTSANCE USE
+      # Note: Where is PDC ?????
       "How many days in the last 4 weeks?" : 'ndaysconsumed',
       "Principal Substance of Concern and Method of Use": "pdcmthd",
           "Please select from the dropdown menu": "selection",
@@ -73,12 +83,7 @@ survey_mappings = {
             "Me Time": "metime",
       "EVERYDAY LIVING - CURRENT ISSUES Notes for ITSP" : "ni_livissu",
       "EVERYDAY LIVING - GOALS Notes for ITSP": "ni_goals_livissu",
-      "How has your physical health been, in the last 4 weeks?": "phyheal",
-      "How often has your health caused problems in your daily life?": "healcauseprob",
-      "Do you have a GP or medical centre that you regularly attend?": "regumedic",   #NOTE: not in ITSP
-      "In the past 4 weeks have you been in hospital or needed to call an ambulance?" : "ambu",      
-      "Are you currently taking any medications?": "medications",
-      "Do you suffer from any allergies?": "allerg",
+      
       
       # RISK # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
       "Mental Health Risk Issues": "risk_ment_issues",
@@ -87,16 +92,22 @@ survey_mappings = {
       "Any indication of suicidal ideation?": "risk_suicide",      
       "Have you experienced any thoughts of death/dying or of hurting yourself?": "thoughtsofhurt",
   
-      # Physical Health  
+      # Physical Health
+      "How has your physical health been, in the last 4 weeks?": "phyrate",
+      "How often has your health caused problems in your daily life?": "phycauseprob", # change to physical healt caused problem ?
+      "Do you have a GP or medical centre that you regularly attend?": "regumedic",   #NOTE: not in ITSP
+      "In the past 4 weeks have you been in hospital or needed to call an ambulance?" : "ambu",      
+      "Are you currently taking any medications?": "medications",
+      "Do you suffer from any allergies?": "allerg",
       "PHYSICAL HEALTH & WELLBEING - CURRENT ISSUES Notes for ITSP": "ni_sum_welb",
       "PHYSICAL HEALTH & WELLBEING - GOALS Notes for ITSP":"ni_goals_welb",
+      
+      #Mental Health
       "How has your psychological/mental health been? Do you have moods, fears, emotions or other thoughts that concern you?":"mentrate",
       "Sleep Do you have any sleep issues? Check all that apply": "sleep",
       "How often does your mental health create problems in your daily life?": "mentcauseprob",
       "Have you ever been diagnosed with a mental health issue?" : "diagment",        #NOTE: not in ITSP
       "Have you have ever been hospitalised for a mental health issue?" : "hospment",
-      
-      #Mental Health      
       "MENTAL HEALTH & WELLBEING - CURRENT ISSUES Notes for ITSP": "ni_sum_ment",
       "MENTAL HEALTH & WELLBEING - GOALS Notes for ITSP": "ni_goals_ment",
             
@@ -126,7 +137,7 @@ survey_mappings = {
       # Where are you at, right now ?
       "How important is change to you?": "change",
       "How close are you to where you want to be in managing your substance use?": "closemanag",
-      "So, now we've gone through everything, how would you rate your situation over the last 4 weeks ?": "ratesituation",
+      "So, now we've gone through everything, how would you rate your situation over the last 4 weeks ?": "qolrate",
       "Is there anything else you'd like to tell us about yourself ?":"else",
       "Are you engaged with any other services at the moment?": "otherserv",
 

@@ -1,5 +1,15 @@
 
 
+
+- IMPORTANT : mcq with "Other" + text answer could be for any of the mcqs 
+            - the schema passed into Logic App needs to express this.
+
+
+DONE - Mongo DB keys are not unique
+      - can't be SLK as client can have multiple registrations, initial assessment etc. 
+  Changed to default - autogenerate random ID
+
+
 - SLK Generator PowerApp
     v1: SLK + Link generator .. Wohoo !
     
@@ -12,6 +22,8 @@
   - if client-ID is not passed in, show the SLK field (careful about letting user entry here - no validation in SM)
     - email sent to staff with completed Word ITSP document and a warning message to let MJ know about it.
     - MJ to find the randomly generated ID in Cosmos and give it the correct SLK
+
+
 
 
 DevOps

@@ -10,19 +10,39 @@ from .qna_processors import qtype_handlers
 # id_types = ['row_id', 'col_id', 'choice_id']
 # id_types_list_map = {'row_id':'rows' , 'col_id': 'cols', 'choice_id': 'choices'}
 
+def data_from_fieldpath(data, field_path:str):
+  k, v = field_path.split('.')
+  return str.strip(data[k][v])
+
+
+def is_incomplete_response(data, incomplete_if_empty):
+  try:
+    return any(False if data_from_fieldpath(data,field) else True 
+              for field in incomplete_if_empty )
+  except KeyError:
+    return True
+
+
 # meta data to store 
-def extract_meta(data, answers_json, survey_type):
+def extract_meta(data, answers_json, survey_type, incomplete_if_empty: tuple):
 
   staff_name = data['DEMOGRAPHICS']['staff']
   staff_name =  staff_name.replace(" ",".",1).strip()
   staff_email = f"{staff_name}@directionshealth.com"
 
-  return { 'meta':
-            {'survey_type': survey_type, 'response_id' : answers_json['id'], 
-             'survey_id' : answers_json['survey_id'], 'edit_url' : answers_json['edit_url'],
-             'date_created': answers_json['date_created'], 'date_modified': answers_json['date_modified'],
-             'staff_email': staff_email, 'is_partial': False}
-          }
+  is_incomplete = is_incomplete_response(data, incomplete_if_empty)
+  meta_dict = { 'meta':
+                {'survey_type': survey_type, 'response_id' : answers_json['id'], 
+                'survey_id' : answers_json['survey_id'], 
+                'date_created': answers_json['date_created'], 'date_modified': answers_json['date_modified'],
+                'staff_email': staff_email, 
+                'is_incomplete': is_incomplete}
+              }
+
+  if is_incomplete:
+    meta_dict['edit_url']= answers_json['edit_url']
+
+  return meta_dict
 
 '''
 "href": "https://api.surveymonkey.net/v3/surveys/271026860/responses/11075389573",
@@ -43,14 +63,14 @@ def extract_response(survey_schema, answers_json, stype=None):
   else:
     from ..schema.qna_mapping.initial_assessment import survey_mappings as mapping_dict
 
-  res = process_pages(survey_schema, pages, mapping_dict)
+  res = ids_to_raw(survey_schema, pages, mapping_dict)
   
-  field_table = mapping_dict["field_table"]
-  values_table = mapping_dict["values_table"]
-  bit_fields = mapping_dict["bit_fields"]
-  skip_fields = mapping_dict["skip_fields"]
+  # field_table = mapping_dict["field_table"]
+  # values_table = mapping_dict["values_table"]
+  # bit_fields = mapping_dict["bit_fields"]
+  # skip_fields = mapping_dict["skip_fields"]
 
-  res = storage_convertor(res, field_table, values_table, bit_fields, skip_fields)
+  res = storage_convertor(res, mapping_dict)
     
   for func in mapping_dict['struct_transform_funcs']:
     res = func(res)
@@ -65,7 +85,7 @@ def extract_response(survey_schema, answers_json, stype=None):
   # else:
   #   res['client_id'] = res['DEMOGRAPHICS']['client_id'] # it was typed into the form?  -> remove the need for this, the URL would always insert it.
   
-  meta = extract_meta(res, answers_json, stype.qna_map_key)
+  meta = extract_meta(res, answers_json, stype.qna_map_key, mapping_dict['incomplete_if_empty'])
   #staff_name = res['DEMOGRAPHICS'].get('team_staff').get("Your Contact").get("Team Member")
   res = {**res, **meta}
 
@@ -104,6 +124,8 @@ def process_page(sch_qs, response_qs, trans_dict):
   qna = {}
   for q_schema, resp_q in q_schemas__respq:
     question_text = clean(q_schema['headings'][0]['heading'])
+    
+    #qna.setdefault(question_text, process_question(q_schema, resp_q, trans_dict))
     if qna.get(question_text):
       qna[question_text].append(process_question(q_schema, resp_q, trans_dict))
     else:
@@ -113,7 +135,7 @@ def process_page(sch_qs, response_qs, trans_dict):
  
     
 
-def process_pages(qna_id_defs, pages, trans_dict):
+def ids_to_raw(qna_id_defs, pages, trans_dict):
 
   
   results = {} # {'meta' : pages.pop(0)} # meta information like date_Created, survey_id , response_id 

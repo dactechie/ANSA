@@ -4,7 +4,8 @@ from .struct_transformers.client_registration import  flatten_substance_use
 survey_mappings = {
     
     "struct_transform_funcs": (flatten_team_staff, flatten_substance_use, flatten_official_use),
-
+    "incomplete_if_empty" : (),
+    "numeric_fields": (),
     "field_table" : {
       "Date": "surv_date",
       "Medicare Number": "medicare",

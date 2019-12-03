@@ -69,8 +69,9 @@ def insert_data(data, survey_type):
 
 
 if __name__ == "__main__":
-    survey_id = "271601477"
-   # survey_id = "271604360"
+    #survey_id = "271601477"
+    survey_id = "client_registration"
+    #survey_id = "initial_assessment" #"271604360"
 
     data , errors = extract(survey_id)    
     #pprint.pprint(data)

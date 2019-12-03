@@ -41,6 +41,10 @@ not_in_itsp_review = {"Have you ever previously accessed alcohol and / or drug t
 
 ini_as = survey_mappings['initial_assessment']
 
+# TODO TODO include these TODO TODO TODO TODO TODO TODO TODO TODO
+# TODO  struct_transform_funcs
+# TODO  incomplete_if_empty
+
 itsp_review = { **ini_as['values_table'], 'bit_fields' : ini_as['bit_fields']}
 
 itsp_review['field_table'] = only_with_allowed_keys(
