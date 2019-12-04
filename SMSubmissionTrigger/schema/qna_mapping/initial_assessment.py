@@ -12,7 +12,7 @@ survey_mappings = {
                             "LEGAL.ni_goals_legal"),
 
     "numeric_fields" : ("injdays", "phyrate", "mentrate", "ndaysconsumed", "p1_5" ,"perday", "age1st", 
-                        "closemanag" ,"qolrate", "Sex_ndays",  "Number of Days"),
+                        "closemanag" ,"qolrate", "Sex_ndays",  "Number of Days" ,"ndays"),
 
     "field_table": {
       # "DEMOGRAPHICS"

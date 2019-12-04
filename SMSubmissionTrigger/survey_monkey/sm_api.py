@@ -1,10 +1,13 @@
 
+
 import requests
+from ..config import SM_BEARER_TOKEN
+
 
 client = requests.session()
 
 headers = {
-    "Authorization": "bearer %s" % "gGjGCiPUvNABVM9Wt5MT1LC12m2ptqvUeMRg8WuJvTBoynF5fZpynFzVRj0JiGZlNjEgvJ4.SIBhle1bXVU3T.UJdtRa5WSLseruHn855ySsBPszhnoVL.2Yu1VBe3zf",
+    "Authorization": "bearer %s" % SM_BEARER_TOKEN,
     "Content-Type": "application/json"
 }
 

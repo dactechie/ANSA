@@ -20,7 +20,7 @@
 def flatten_aod_history(data):
   
   aod_hist_dict = data["SUBSTANCE USE"]["AOD History"]
-  data["SUBSTANCE USE"]["AOD History"] = generize_dict(aod_hist_dict, numeric_fields=["age1st", "perday"])
+  data["SUBSTANCE USE"]["AOD History"] = generize_dict(aod_hist_dict)
   return data
 
 
@@ -72,12 +72,7 @@ def flatten_substance_use(data):
         #   "List your order of priority 1 - 5": "5"
         # },
 
-def generize_dict(dct, numeric_fields=None) -> list:
-  # if numeric_fields:
-  #   for v in dct.values():
-  #     for n in numeric_fields:
-  #       v[n] = int(v[n])
-
+def generize_dict(dct) -> list:
   result = {}
   for k, v in dct.items():
     for kk, vv in v.items():
@@ -93,9 +88,8 @@ def flatten_everyday_living(data):
 
   # doing this to make it easier to Parse JSON in the logic app. For each item in the array, 
   # the logic app creates an instance of the entity:ep_everyday_living), which is linked to this particular InitialAssessment
-  erryday['engag'] =  generize_dict(erryday['engag'], numeric_fields=['ndays'])
-  erryday['spendtime'] = generize_dict(erryday['spendtime'], 
-                                  numeric_fields=['p1_5'])
+  erryday['engag'] =  generize_dict(erryday['engag'])
+  erryday['spendtime'] = generize_dict(erryday['spendtime'])
 
   return data
 
