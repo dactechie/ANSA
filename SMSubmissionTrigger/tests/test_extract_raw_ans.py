@@ -44,9 +44,9 @@ def extract(survey_id):
   
   raw_answers, errors = extract_response(schema_json, survey_response, stype=stype)
 
-  if stype.qna_map_key is 'initial_assessment' :
+  if stype.qna_map_key is 'initial_assessment':
     sds_key = "SDS - Severity of Dependence Scale"
-    raw_answers[sds_key]['sds_score'] = get_total_score(raw_answers[sds_key].values() )
+    raw_answers[sds_key]['sds_score'] = get_total_score(raw_answers[sds_key].values())
   
   return raw_answers, errors
   
@@ -70,8 +70,8 @@ def insert_data(data, survey_type):
 
 if __name__ == "__main__":
     #survey_id = "271601477"
-    survey_id = "client_registration"
-    #survey_id = "initial_assessment" #"271604360"
+    #survey_id = "client_registration"
+    survey_id = "initial_assessment" #"271604360"
 
     data , errors = extract(survey_id)    
     #pprint.pprint(data)

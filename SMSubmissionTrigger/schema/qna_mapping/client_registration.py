@@ -5,7 +5,7 @@ survey_mappings = {
     
     "struct_transform_funcs": (flatten_team_staff, flatten_substance_use, flatten_official_use),
     "incomplete_if_empty" : (),
-    "numeric_fields": (),
+    "numeric_fields": ("gamble_days"),
     "field_table" : {
       "Date": "surv_date",
       "Medicare Number": "medicare",

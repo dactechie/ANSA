@@ -7029,7 +7029,7 @@ schema = {
                   "forced_ranking": False
               }
           ],
-          "title": "OFFICE USE ONLY:",
+          "title": "OFFICE USE ONLY",
           "position": 6,
           "id": "99952288",
           "question_count": 2

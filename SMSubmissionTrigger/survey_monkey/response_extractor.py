@@ -1,11 +1,6 @@
-#import sys
-#import re
-
 from ..utils.string_manip import clean
 from ..utils.converters import storage_convertor
 from .qna_processors import qtype_handlers
-#from ..qna_mappings import survey_mappings
-
 
 # id_types = ['row_id', 'col_id', 'choice_id']
 # id_types_list_map = {'row_id':'rows' , 'col_id': 'cols', 'choice_id': 'choices'}
@@ -32,13 +27,12 @@ def extract_meta(data, answers_json, survey_type, incomplete_if_empty: tuple):
 
   is_incomplete = is_incomplete_response(data, incomplete_if_empty)
   meta_dict = { 'meta':
-                {'survey_type': survey_type, 'response_id' : answers_json['id'], 
-                'survey_id' : answers_json['survey_id'], 
-                'date_created': answers_json['date_created'], 'date_modified': answers_json['date_modified'],
-                'staff_email': staff_email, 
-                'is_incomplete': is_incomplete}
+                {'survey_type': survey_type, 'response_id' : answers_json['id'],
+                'survey_id'   : answers_json['survey_id'], 
+                'date_created': answers_json['date_created'], 
+                'date_modified': answers_json['date_modified'],
+                'staff_email': staff_email, 'is_incomplete': is_incomplete}
               }
-
   if is_incomplete:
     meta_dict['edit_url']= answers_json['edit_url']
 
@@ -63,15 +57,9 @@ def extract_response(survey_schema, answers_json, stype=None):
   else:
     from ..schema.qna_mapping.initial_assessment import survey_mappings as mapping_dict
 
-  res = ids_to_raw(survey_schema, pages, mapping_dict)
-  
-  # field_table = mapping_dict["field_table"]
-  # values_table = mapping_dict["values_table"]
-  # bit_fields = mapping_dict["bit_fields"]
-  # skip_fields = mapping_dict["skip_fields"]
-
+  res = ids_to_raw(survey_schema, pages, mapping_dict)  
   res = storage_convertor(res, mapping_dict)
-    
+  
   for func in mapping_dict['struct_transform_funcs']:
     res = func(res)
 
@@ -83,74 +71,63 @@ def extract_response(survey_schema, answers_json, stype=None):
     errors.append("MissingClientID")
   
   # else:
-  #   res['client_id'] = res['DEMOGRAPHICS']['client_id'] # it was typed into the form?  -> remove the need for this, the URL would always insert it.
-  
+  #   res['client_id'] = res['DEMOGRAPHICS']['client_id'] 
+  # it was typed into the form?  -> remove the need for this, the URL would always insert it.
+  """
+    incomplete_if_empty
+    If no answer was provided for these fields, the survey is treated as incomplete and 
+    edit_url is provided to staff, to be able to complete the survey.
+  """
   meta = extract_meta(res, answers_json, stype.qna_map_key, mapping_dict['incomplete_if_empty'])
-  #staff_name = res['DEMOGRAPHICS'].get('team_staff').get("Your Contact").get("Team Member")
   res = {**res, **meta}
 
-  #res['errors'] = ",".join(errors)
   return res, errors
 
 
-
-def process_question(schema_question, question, trans_dict):
-  
-  results = None
-  
+def process_ans_for_question(schema_question, question, trans_dict):  
+  results = None  
   txt_replace_fn = qtype_handlers.get(schema_question['family'])
   if txt_replace_fn:
-    results =  txt_replace_fn(schema_question, question, trans_dict)
-    #print (results)
+    results = txt_replace_fn(schema_question, question, trans_dict)
   else:
     print(f"\n\n...........family : {schema_question['family']}\n\n")
   
   return results
 
 
-
 def schema_for_question_id(schema_questions, response_qid):
   return next(sq for sq in schema_questions if sq['id'] == response_qid)
 
 
-def process_page(sch_qs, response_qs, trans_dict):
+def process_page(sch_qs, response_qs, translation_dict):
 
-  q_schemas__respq = [(schema_for_question_id(sch_qs, resp_q['id']), resp_q) 
-                        for resp_q in response_qs]
-
+  q_schemas__respq = ((schema_for_question_id(sch_qs, resp_q['id']), resp_q) 
+                        for resp_q in response_qs)
   # some questions may not have been answered, filter them out
   q_schemas__respq = filter(lambda qs: qs[0] != None, q_schemas__respq)
-
   qna = {}
   for q_schema, resp_q in q_schemas__respq:
     question_text = clean(q_schema['headings'][0]['heading'])
     
     #qna.setdefault(question_text, process_question(q_schema, resp_q, trans_dict))
+    processed_q = process_ans_for_question(q_schema, resp_q, translation_dict)
     if qna.get(question_text):
-      qna[question_text].append(process_question(q_schema, resp_q, trans_dict))
+      qna[question_text].append(processed_q)
     else:
-      qna[question_text] = process_question(q_schema, resp_q, trans_dict)
+      qna[question_text] = processed_q
 
   return qna
  
     
-
-def ids_to_raw(qna_id_defs, pages, trans_dict):
-
-  
+def ids_to_raw(qna_id_defs, pages, trans_dict): 
   results = {} # {'meta' : pages.pop(0)} # meta information like date_Created, survey_id , response_id 
-
   for counter, page in enumerate(pages):
     res = process_page(qna_id_defs['pages'][counter]['questions'],
                        page['questions'], trans_dict)
     page_title = qna_id_defs['pages'][counter]['title']
     results[page_title] = res
-    #results.append(res)
 
   return results
-
-
-
 
 
 #def get_idname_dict(container, items_type, name_field='text'):

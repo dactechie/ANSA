@@ -5,7 +5,10 @@ from .struct_transformers.initial_assessment import  (flatten_substance_use, fla
 survey_mappings = {
     "struct_transform_funcs": (flatten_team_staff, flatten_official_use,  flatten_everyday_living,
                                  flatten_substance_use, flatten_substance_impact, flatten_aod_history),
-
+    # """
+    # If no answer was provided for these fields, the survey is treated as incomplete and 
+    # edit_url is provided to staff, to be able to complete the survey.
+    # """
     "incomplete_if_empty" : ("IMPACT OF SUBSTANCE USE.ni_goals", "HOUSING & SAFETY.ni_goals_housaft", 
                             "EVERYDAY LIVING.ni_goals_livissu", 
                             "PHYSICAL HEALTH & WELLBEING.ni_goals_welb", "MENTAL HEALTH & WELLBEING.ni_goals_ment",

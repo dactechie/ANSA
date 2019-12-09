@@ -97,13 +97,9 @@ def storage_convertor(arb_list, mapping_dict):
   for page_title, qna_dict in arb_list.items():
     page_result = None
     if isinstance(qna_dict, dict):
-      r = mapto_storage_kv_dict(qna_dict, mapping_dict)
-      if r:
-        page_result = r
-        #page_result.append(r)
+      page_result = mapto_storage_kv_dict(qna_dict, mapping_dict)
     elif isinstance(qna_dict, list):
-      r = mapto_storage_kv_list(qna_dict, mapping_dict)
-      page_result = r #.append(r)
+      page_result = mapto_storage_kv_list(qna_dict, mapping_dict)      
     if page_result:
       results[page_title] = page_result #merge_dicts(page_result) 
 
