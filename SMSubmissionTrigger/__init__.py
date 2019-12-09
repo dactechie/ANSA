@@ -54,7 +54,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
        
       survey_response = get_survey_responses(sid, rid)
       if 'error' in survey_response: #['error']['http_status_code']         
-        raise ResponseRetrievalError({'msg' : "Error while retrieving survey response."})
+        raise ResponseRetrievalError(survey_response['error'])
 
       raw_answers, errors = extract_response(stype.schema, answers_json=survey_response, stype=stype)
       
@@ -116,7 +116,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     except ResponseRetrievalError as e:
       logging.error (e)
       return func.HttpResponse(
-             "no survey response",
+             str(e),
              status_code=400
         )
 

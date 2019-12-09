@@ -1,6 +1,9 @@
 
 """App configuration."""
+from dotenv import load_dotenv
 from os import environ
+
+load_dotenv()
 
 SM_BEARER_TOKEN = environ.get('SM_BEARER_TOKEN')
 
